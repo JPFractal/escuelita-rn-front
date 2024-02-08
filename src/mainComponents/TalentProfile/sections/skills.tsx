@@ -15,7 +15,7 @@ export default function TalentProfileSkills({
         </Typography>
         <div className="flex flex-wrap gap-2">
           {talent.techSkills.map((skill) => (
-            <Badge color="sky">
+            <Badge color="sky" key={skill.name}>
               {skill.name} - {skill.years}
             </Badge>
           ))}
@@ -27,7 +27,9 @@ export default function TalentProfileSkills({
         </Typography>
         <div className="flex flex-wrap gap-2">
           {talent.softSkills.map((skill) => (
-            <Badge color="pink">{skill}</Badge>
+            <Badge color="pink" key={skill}>
+              {skill}
+            </Badge>
           ))}
         </div>
       </div>

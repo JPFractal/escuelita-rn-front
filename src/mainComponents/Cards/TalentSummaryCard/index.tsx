@@ -19,7 +19,7 @@ export default function TalentSummaryCard({
   salaryMax = 0,
   selected = false,
 }: Talent) {
-  let styles = "flex flex-col gap-[18px] rounded-lg px-4 py-4 ";
+  let styles = "flex flex-col gap-[18px] rounded-lg px-4 py-4 w-96";
 
   if (selected) styles += " bg-sky-40";
 

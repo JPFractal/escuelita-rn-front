@@ -14,6 +14,7 @@ export default interface Talent {
 }
 
 export interface TalentFull extends Talent {
+  description: string;
   techSkills: Array<Skill>;
   softSkills: Array<string>;
   feedbacks: Array<Feedback>;

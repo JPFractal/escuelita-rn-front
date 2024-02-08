@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { is } from "./size";
 
 export default function Icon({
   src,
@@ -9,12 +10,6 @@ export default function Icon({
   size?: "md" | "xs" | "lg";
   className?: string;
 }) {
-  const is = {
-    lg: 24,
-    md: 20,
-    xs: 16,
-  };
-
   return (
     <Image
       width={is[size]}
