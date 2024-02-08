@@ -6,10 +6,11 @@ export default function Icon({
   className,
 }: {
   src: string;
-  size?: "md" | "xs";
+  size?: "md" | "xs" | "lg";
   className?: string;
 }) {
   const is = {
+    lg: 24,
     md: 20,
     xs: 16,
   };

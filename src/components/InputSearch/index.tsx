@@ -7,8 +7,7 @@ export default function InputSearch() {
   return (
     <div className="w-80 h-11 relative">
       <input
-        className="w-full h-full rounded-full pl-11 shadow-md border"
-        style={{ borderColor: `${colors.borders.grey} !important` }}
+        className="w-full h-full rounded-full pl-11 shadow-md border border-gray-30"
         placeholder="Buscar talento o puesto"
       />
       <Icon

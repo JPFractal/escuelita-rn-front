@@ -1,14 +1,15 @@
 import Image from "next/image";
+import UserDefaultPhoto from "@/assets/svg/img/user-default.svg";
 
 export default function Avatar({
-  src,
-  alt,
+  src = UserDefaultPhoto,
+  alt = "",
   size = "md",
   className,
 }: {
-  src: string;
-  alt: string;
-  size?: "md" | "xs";
+  src?: string;
+  alt?: string;
+  size?: "md" | "xs" | "xl";
   className?: string;
 }) {
   const is = {

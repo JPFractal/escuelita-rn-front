@@ -1,12 +1,15 @@
 import Image from "next/image";
 import Icon from "../Icon";
-import colors from "@/theme/colors";
 
-interface ButtonProps {
+import { button as colors } from "@/themes/colors";
+
+export interface ButtonProps {
   children?: React.ReactNode;
-  variant?: "contained" | "outlined";
-  color?: "green" | "sky-blue";
+  variant?: "contained" | "outlined" | "text";
+  color?: "green" | "sky" | "gray";
+  iconSize?: "md" | "xs" | "lg";
   startIcon?: string;
+  endIcon?: string;
 }
 
 export default function Button({
@@ -14,22 +17,25 @@ export default function Button({
   variant = "contained",
   color = "green",
   startIcon,
+  endIcon,
+  iconSize = "md",
 }: ButtonProps) {
+  let styles =
+    "flex rounded-lg px-4 py-[10px] items-center capitalize font-semibold";
+
+  if (variant === "outlined")
+    styles += ` border ${colors[color].border} ${colors[color].text}`;
+
+  if (variant === "contained")
+    styles += ` border ${colors[color].background} text-white-10`;
+
+  if (variant === "text") styles += ` ${colors[color].text}`;
+
   return (
-    <button
-      className="flex border rounded-lg px-4 py-[10px] capitalize font-semibold"
-      style={{
-        borderColor: colors.button[color],
-        ...(variant === "contained"
-          ? {
-              backgroundColor: colors.button[color],
-              color: "white",
-            }
-          : { color: colors.button[color] }),
-      }}
-    >
-      {startIcon && <Icon src={startIcon} className="mr-3" />}
+    <button className={styles}>
+      {startIcon && <Icon src={startIcon} className="mr-3" size={iconSize} />}
       {children}
+      {endIcon && <Icon src={endIcon} className="ml-3" size={iconSize} />}
     </button>
   );
 }
