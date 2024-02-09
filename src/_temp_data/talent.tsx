@@ -49,6 +49,51 @@ const talent = {
       },
       score: 3,
     },
+    {
+      id: 1,
+      comment: "Ayudó siempre al equipo, es muy talentoso.",
+      author: {
+        id: 1,
+        name: "Manuel Ramirez",
+        role: "Tech Lead",
+      },
+      score: 3,
+    },
+  ],
+  experiences: [
+    {
+      id: 1,
+      type: "work",
+      organization: {
+        id: 1,
+        name: "FRACTAL",
+      },
+      position: "Desarrollador Full-Stack",
+      startDate: new Date(2020, 5, 6),
+      endDate: null,
+    },
+    {
+      id: 2,
+      type: "school",
+      organization: {
+        id: 2,
+        name: "Pontificia Universidad Católica del Perú",
+      },
+      position: "Bachiller en Ingeniería de sistemas",
+      startDate: new Date(2015, 5, 6),
+      endDate: new Date(2021, 5, 6),
+    },
+    {
+      id: 3,
+      type: "school",
+      organization: {
+        id: 3,
+        name: "Cibertec",
+      },
+      position: "Diplomado en Análisis de Datos",
+      startDate: new Date(2015, 5, 6),
+      endDate: new Date(2021, 5, 6),
+    },
   ],
 };
 

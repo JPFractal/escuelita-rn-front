@@ -1,7 +1,6 @@
 import Image from "next/image";
 import FractalLogo from "@/assets/svg/img/fractal-logo.svg";
 import InputSearch from "../InputSearch";
-import colors from "@/theme/colors";
 import UserMenu from "../UserMenu";
 
 export default function Header() {

@@ -1,3 +1,4 @@
+import Experience from "./Experience";
 import Feedback from "./Feedback";
 import Skill from "./Skill";
 
@@ -18,4 +19,5 @@ export interface TalentFull extends Talent {
   techSkills: Array<Skill>;
   softSkills: Array<string>;
   feedbacks: Array<Feedback>;
+  experiences: Array<Experience>;
 }

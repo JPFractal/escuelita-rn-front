@@ -3,13 +3,14 @@ import Typography from "@/components/common/Typography";
 import Badge from "@/components/common/Badge";
 import OrganizationCard from "@/mainComponents/Cards/OrganizationCard";
 import AddIcon from "@/components/common/Icon/icons/add";
+import Experience from "@/types/Experience";
 
 export default function TalentProfileOrganizations({
   title = "",
-  talent,
+  items = [],
 }: {
   title?: string;
-  talent: TalentFull;
+  items: Array<Experience>;
 }) {
   return (
     <section className="col-span-12 flex flex-col gap-2">
@@ -19,9 +20,9 @@ export default function TalentProfileOrganizations({
         </Typography>
         <AddIcon className="absolute bottom-1/2 translate-y-1/2 right-0" />
       </div>
-      <div className="flex">
-        <OrganizationCard />
-      </div>
+      {items.map((item) => (
+        <OrganizationCard key={item.id} experience={item} />
+      ))}
     </section>
   );
 }

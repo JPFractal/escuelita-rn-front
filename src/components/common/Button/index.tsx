@@ -10,6 +10,7 @@ export interface ButtonProps {
   iconSize?: "md" | "xs" | "lg";
   startIcon?: string;
   endIcon?: string;
+  className?: string;
 }
 
 export default function Button({
@@ -19,9 +20,11 @@ export default function Button({
   startIcon,
   endIcon,
   iconSize = "md",
+  className = "",
 }: ButtonProps) {
   let styles =
-    "flex rounded-lg px-4 py-[10px] items-center capitalize font-semibold";
+    className +
+    " flex rounded-lg px-4 py-[10px] items-center capitalize font-semibold";
 
   if (variant === "outlined")
     styles += ` border ${colors[color].border} ${colors[color].text}`;
