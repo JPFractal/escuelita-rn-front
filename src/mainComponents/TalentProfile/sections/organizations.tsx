@@ -4,6 +4,7 @@ import Badge from "@/components/common/Badge";
 import OrganizationCard from "@/mainComponents/Cards/OrganizationCard";
 import AddIcon from "@/components/common/Icon/icons/add";
 import Experience from "@/types/Experience";
+import ListContainer from "@/components/common/Container/List";
 
 export default function TalentProfileOrganizations({
   title = "",
@@ -13,16 +14,12 @@ export default function TalentProfileOrganizations({
   items: Array<Experience>;
 }) {
   return (
-    <section className="col-span-12 flex flex-col gap-2">
-      <div className="relative">
-        <Typography variant="support" className="font-bold">
-          {title}
-        </Typography>
-        <AddIcon className="absolute bottom-1/2 translate-y-1/2 right-0" />
-      </div>
-      {items.map((item) => (
-        <OrganizationCard key={item.id} experience={item} />
-      ))}
+    <section className="col-span-12 ">
+      <ListContainer name={title}>
+        {items.map((item) => (
+          <OrganizationCard key={item.id} experience={item} />
+        ))}
+      </ListContainer>
     </section>
   );
 }

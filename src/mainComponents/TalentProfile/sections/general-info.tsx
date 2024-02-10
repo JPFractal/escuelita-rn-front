@@ -22,10 +22,9 @@ export default function TalentProfileGeneralInfo({
 }: {
   talent: TalentFull;
 }) {
-  const meanScore = talent.feedbacks.reduce(
-    (acum, feeback) => (acum += feeback.score),
-    0
-  );
+  const meanScore =
+    talent.feedbacks.reduce((acum, feeback) => (acum += feeback.score), 0) /
+    talent.feedbacks.length;
 
   return (
     <section className="col-span-12 flex gap-7 items-center relative">
