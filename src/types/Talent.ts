@@ -9,15 +9,18 @@ export default interface Talent {
   rating?: number;
   city?: string;
   country?: string;
-  salaryMin?: number;
-  salaryMax?: number;
+  salary_min?: number;
+  salary_max?: number;
   selected?: boolean;
+  national_currency?: number;
 }
 
 export interface TalentFull extends Talent {
   description: string;
-  techSkills: Array<Skill>;
-  softSkills: Array<string>;
+  tech_skills: Array<Skill>;
+  soft_skills: Array<string>;
   feedbacks: Array<Feedback>;
   experiences: Array<Experience>;
+  github_url?: string;
+  linkedin_url?: string;
 }

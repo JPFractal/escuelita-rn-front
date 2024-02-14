@@ -7,8 +7,8 @@ const talents_test_data: Array<User> = [
     rating: 3,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
   {
     name: "Claudia Castillo",
@@ -16,8 +16,8 @@ const talents_test_data: Array<User> = [
     rating: 4,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
   {
     name: "Jorge Ramirez",
@@ -25,8 +25,8 @@ const talents_test_data: Array<User> = [
     rating: 1,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
   {
     name: "Claudia Castillo",
@@ -34,8 +34,8 @@ const talents_test_data: Array<User> = [
     rating: 4,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
   {
     name: "Jorge Ramirez",
@@ -43,8 +43,8 @@ const talents_test_data: Array<User> = [
     rating: 1,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
   {
     name: "Jorge Ramirez",
@@ -52,8 +52,8 @@ const talents_test_data: Array<User> = [
     rating: 1,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
   {
     name: "Claudia Castillo",
@@ -61,8 +61,8 @@ const talents_test_data: Array<User> = [
     rating: 4,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
   {
     name: "Jorge Ramirez",
@@ -70,8 +70,8 @@ const talents_test_data: Array<User> = [
     rating: 1,
     city: "Lima",
     country: "Perú",
-    salaryMin: 2500,
-    salaryMax: 3000,
+    salary_min: 2500,
+    salary_max: 3000,
   },
 ];
 

@@ -15,7 +15,7 @@ export default function TalentProfileSkills({
         axis={0}
         mainContainerClass="w-3/5"
       >
-        {talent.techSkills.map((skill) => (
+        {talent.tech_skills.map((skill) => (
           <Badge color="sky" key={skill.name}>
             {skill.name} - {skill.years}
           </Badge>
@@ -26,7 +26,7 @@ export default function TalentProfileSkills({
         axis={0}
         mainContainerClass="w-2/5"
       >
-        {talent.softSkills.map((skill) => (
+        {talent.soft_skills.map((skill) => (
           <Badge color="pink" key={skill}>
             {skill}
           </Badge>

@@ -1,16 +1,17 @@
 import FileCardProps from "@/types/common/FileCard";
-import CertificateIMG from "@/assets/svg/mockups/certificate.svg";
 import Image from "next/image";
 import Typography from "../../Typography";
 
 export default function FileCard({
   className,
   name,
-  src = CertificateIMG,
+  src,
+  ...props
 }: FileCardProps) {
   return (
     <div
-      className={`bg-gray-50 ${className} max-h-[140px] overflow-hidden p-2 rounded-lg `}
+      className={`bg-gray-50 ${className} max-h-[140px] overflow-hidden p-2 rounded-lg hover:bg-gray-40`}
+      {...props}
     >
       <Image
         className="h-20 w-full object-cover"
@@ -19,7 +20,7 @@ export default function FileCard({
         width={222}
         height={140}
       />
-      <div className="w-full bg-gray-50 p-2 h-max">
+      <div className="w-full p-2 h-max">
         <Typography>{name}</Typography>
         <Typography className="text-[10px]">PDF</Typography>
       </div>

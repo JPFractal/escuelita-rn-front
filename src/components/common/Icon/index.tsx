@@ -1,15 +1,19 @@
 import Image from "next/image";
 import { is } from "./size";
 
+interface IconProps {
+  src: string;
+  size?: "md" | "xs" | "lg";
+  className?: string;
+  [key: string]: any;
+}
+
 export default function Icon({
   src,
   size = "md",
   className,
-}: {
-  src: string;
-  size?: "md" | "xs" | "lg";
-  className?: string;
-}) {
+  ...props
+}: IconProps) {
   return (
     <Image
       width={is[size]}
@@ -17,6 +21,7 @@ export default function Icon({
       src={src}
       alt="icon"
       className={className}
+      {...props}
     />
   );
 }

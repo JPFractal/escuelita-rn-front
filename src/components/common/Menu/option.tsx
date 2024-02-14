@@ -15,7 +15,7 @@ export default function Option({
 
   return (
     <div
-      className={`hover:cursor-pointer py-2.5 px-3.5 w-80 ${className} hover:bg-sky-40`}
+      className={`hover:cursor-pointer py-2.5 px-3.5 text-nowrap ${className} hover:bg-sky-40 w-full`}
       onClick={onClick}
     >
       {children}

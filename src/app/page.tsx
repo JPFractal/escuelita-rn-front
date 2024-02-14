@@ -6,6 +6,9 @@ import Button from "@/components/common/Button";
 
 import AddIcon from "@/assets/svg/icons/add.svg";
 import TalentCarousel from "@/mainComponents/TalentCarousel";
+import Modal from "@/components/common/Modal";
+import useToogle from "@/hooks/useToogle";
+import Paper from "@/components/common/Container/Paper/intex";
 
 export default function Home() {
   return (

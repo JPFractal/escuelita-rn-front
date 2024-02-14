@@ -11,10 +11,10 @@ export default function TalentProfileDescription({
 }) {
   return (
     <section className="col-span-12 flex">
-      <Typography>{talent.description}</Typography>
-      <Link href={""}>
-        <EditIcon />
-      </Link>
+      <Typography>
+        {talent.description}
+        <span>◘</span>
+      </Typography>
     </section>
   );
 }

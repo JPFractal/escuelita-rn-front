@@ -5,9 +5,12 @@ const talent = {
   rating: 3,
   city: "Lima",
   country: "Perú",
-  salaryMin: 2500,
-  salaryMax: 3000,
-  techSkills: [
+  salary_min: 2500,
+  salary_max: 3000,
+  national_currency: 1,
+  github_url: "https://github.com/juanlopezmartinez",
+  linkedin_url: "https://linkedin.com/in/juanlopezmartinez",
+  tech_skills: [
     {
       name: "Data Structure",
       years: 3.5,
@@ -37,7 +40,7 @@ const talent = {
       years: 2,
     },
   ],
-  softSkills: ["Comunicación", "Auto-aprendizaje", "Empatía"],
+  soft_skills: ["Comunicación", "Auto-aprendizaje", "Empatía"],
   feedbacks: [
     {
       id: 1,
@@ -94,6 +97,10 @@ const talent = {
       startDate: new Date(2015, 5, 6),
       endDate: new Date(2021, 5, 6),
     },
+  ],
+  certificates: [
+    { id: 1, name: "Frontend", src: "/mock-data/certificate.svg" },
+    { id: 2, name: "Backend", src: "/mock-data/certificate.svg" },
   ],
 };
 

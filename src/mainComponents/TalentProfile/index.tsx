@@ -1,7 +1,6 @@
 import useTalent from "@/hooks/useTalent";
 import TalentProfileGeneralInfo from "./sections/general-info";
 import TalentProfileSkills from "./sections/skills";
-import Typography from "@/components/common/Typography";
 import TalentProfileDescription from "./sections/description";
 import TalentProfileOrganizations from "./sections/organizations";
 import TalentProfileFeedback from "./sections/feedback";
@@ -16,7 +15,7 @@ export default function TalentProfile({ idTalent }: { idTalent: number }) {
       style={{ maxHeight: "calc(100vh - 220px)" }}
     >
       <TalentProfileGeneralInfo talent={talent} />
-      <TalentProfileCertificates />
+      <TalentProfileCertificates items={talent.certificates} />
       <TalentProfileSkills talent={talent} />
       <TalentProfileDescription talent={talent} />
       <TalentProfileOrganizations

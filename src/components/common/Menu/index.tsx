@@ -1,38 +1,48 @@
 import useToogle from "@/hooks/useToogle";
-import Badge, { BadgeProps } from "../Badge";
+import Button, { ButtonProps } from "../Button";
 
-interface MenuProps extends BadgeProps {
+interface MenuProps extends ButtonProps {
   children: React.ReactNode;
   title: string;
+  wide?: boolean;
 }
 
 export default function Menu({
   children,
   title,
   className = "",
+  variant = "contained",
+  startIcon = "",
+  endIcon = "",
+  EndIcon = null,
+  StartIcon = null,
+  intensity = "dark",
   color = "gray",
-  wide = false,
-  component = "button",
+  wide = true,
 }: MenuProps) {
   const { flag, toogle } = useToogle(false);
 
   return (
     <>
       <div className="relative">
-        <Badge
+        <Button
           {...{
             className,
             color,
-            component,
+            variant,
+            intensity,
             children: title,
             onClick: toogle,
-            wide,
+            startIcon,
+            endIcon,
+            EndIcon,
+            StartIcon,
           }}
         />
         <div
           className={`bg-[#fff] shadow-md rounded-md ${
             !flag && "hidden"
-          } absolute top-100 left-0 z-20`}
+          } absolute top-100 left-0 z-20 ${wide ? "w-80" : "w-40"}`}
         >
           {children}
         </div>
