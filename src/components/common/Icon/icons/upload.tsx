@@ -1,5 +1,5 @@
 import { IconSVGProps } from "@/types/common/IconSVG";
-import { is } from "../size";
+import IconBaseSVG from "../base";
 
 export default function UploadIcon({
   size = "md",
@@ -7,7 +7,7 @@ export default function UploadIcon({
   color = "#475467",
 }: IconSVGProps) {
   return (
-    <span style={{ width: is[size], height: is[size] }} className={className}>
+    <IconBaseSVG size={size} className={className}>
       <svg
         width="20"
         height="20"
@@ -30,6 +30,6 @@ export default function UploadIcon({
           </clipPath>
         </defs>
       </svg>
-    </span>
+    </IconBaseSVG>
   );
 }

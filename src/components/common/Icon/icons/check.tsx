@@ -1,5 +1,5 @@
 import { IconSVGProps } from "@/types/common/IconSVG";
-import { is } from "../size";
+import IconBaseSVG from "../base";
 
 export default function CheckIcon({
   size = "md",
@@ -7,7 +7,7 @@ export default function CheckIcon({
   color = "#667085",
 }: IconSVGProps) {
   return (
-    <span style={{ width: is[size], height: is[size] }} className={className}>
+    <IconBaseSVG size={size} className={className}>
       <svg
         width="10"
         height="10"
@@ -23,6 +23,6 @@ export default function CheckIcon({
           stroke-linejoin="round"
         />
       </svg>
-    </span>
+    </IconBaseSVG>
   );
 }

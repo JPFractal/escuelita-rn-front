@@ -1,5 +1,5 @@
 import { IconSVGProps } from "@/types/common/IconSVG";
-import { is } from "../size";
+import IconBaseSVG from "../base";
 
 export default function EditIcon({
   size = "md",
@@ -7,7 +7,7 @@ export default function EditIcon({
   color = "#667085",
 }: IconSVGProps) {
   return (
-    <span style={{ width: is[size], height: is[size] }} className={className}>
+    <IconBaseSVG size={size} className={className}>
       <svg
         className="w-full h-full"
         width="20"
@@ -23,6 +23,6 @@ export default function EditIcon({
           />
         </g>
       </svg>
-    </span>
+    </IconBaseSVG>
   );
 }

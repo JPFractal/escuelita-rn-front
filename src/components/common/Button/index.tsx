@@ -1,3 +1,5 @@
+"use client";
+
 import Icon from "../Icon";
 
 import { button as colors } from "@/themes/colors";
@@ -15,6 +17,9 @@ export interface ButtonProps {
   EndIcon?: React.ReactNode;
   StartIcon?: React.ReactNode;
   className?: string;
+  href?: string;
+  title?: string;
+  type?: "button" | "submit" | "reset";
   onClick?: MouseEventHandler;
 }
 
@@ -30,6 +35,9 @@ export default function Button({
   iconSize = "md",
   className = "",
   onClick = () => {},
+  type = "button",
+  title = "",
+  href,
 }: ButtonProps) {
   let styles =
     className +
@@ -45,13 +53,23 @@ export default function Button({
 
   if (variant === "text") styles += ` ${colors[color].text}`;
 
-  return (
-    <button className={styles} onClick={onClick}>
+  const content = (
+    <>
       {startIcon && <Icon src={startIcon} size={iconSize} />}
       {StartIcon}
       {children}
       {EndIcon}
       {endIcon && <Icon src={endIcon} size={iconSize} />}
+    </>
+  );
+
+  return href ? (
+    <a href={href} className={styles}>
+      {content}
+    </a>
+  ) : (
+    <button className={styles} onClick={onClick} type={type} title={title}>
+      {content}
     </button>
   );
 }

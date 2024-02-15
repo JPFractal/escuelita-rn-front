@@ -1,5 +1,5 @@
 import { IconSVGProps } from "@/types/common/IconSVG";
-import { is } from "../size";
+import IconBaseSVG from "../base";
 
 export default function ArrowDownIcon({
   size = "md",
@@ -7,12 +7,8 @@ export default function ArrowDownIcon({
   color = "#667085",
 }: IconSVGProps) {
   return (
-    <span style={{ width: is[size], height: is[size] }} className={className}>
-      <svg
-        viewBox="0 0 24 25"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+    <IconBaseSVG size={size} className={className}>
+      <svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask
           id="mask0_64_663"
           style={{ maskType: "alpha" }}
@@ -31,6 +27,6 @@ export default function ArrowDownIcon({
           />
         </g>
       </svg>
-    </span>
+    </IconBaseSVG>
   );
 }

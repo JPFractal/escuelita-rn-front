@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { is } from "./size";
+import React from "react";
 
 interface IconProps {
   src: string;
@@ -25,3 +26,4 @@ export default function Icon({
     />
   );
 }
+

@@ -11,7 +11,7 @@ export default function Header() {
           <Image src={FractalLogo} width={122} height={32} alt="Fractal logo" />
           <InputSearch />
         </div>
-        <UserMenu name="Claudia Vasquez" role="Reclutador" />
+        <UserMenu name={null} role={null} />
       </div>
     </header>
   );
