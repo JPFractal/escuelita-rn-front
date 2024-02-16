@@ -5,6 +5,6 @@ export default interface ListContainerProps {
   name: string;
   mainContainerClass?: string;
   className?: string;
-  onAdd?: Function;
+  onAdd?: MouseEventHandler;
   axis?: number;
 }

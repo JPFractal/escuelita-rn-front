@@ -5,6 +5,7 @@ export default interface Experience {
   type: string;
   organization: Organization;
   position: string;
-  startDate: Date;
-  endDate: Date | null;
+  grade?: string | null;
+  start_date: Date;
+  end_date: Date | null;
 }

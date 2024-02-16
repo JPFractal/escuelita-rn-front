@@ -15,8 +15,8 @@ export default function TalentSummaryCard({
   rating = 0,
   city = "",
   country = "",
-  salaryMin = 0,
-  salaryMax = 0,
+  salary_max = 0,
+  salary_min = 0,
   selected = false,
 }: Talent) {
   let styles =
@@ -33,7 +33,7 @@ export default function TalentSummaryCard({
           <RatingStars rating={rating} />
           <div className="flex gap-2">
             <TextPlaceIcon text={`${city}, ${country}`} />
-            <TextPriceIcon text={`${salaryMin} - ${salaryMax}`} />
+            <TextPriceIcon text={`${salary_max} - ${salary_min}`} />
           </div>
         </div>
       </div>

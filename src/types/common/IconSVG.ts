@@ -1,5 +1,7 @@
 export interface IconSVGProps {
-  size?: "lg" | "md" | "xs" | "2xs";
+  size?: "2xs" | "xs" | "md" | "lg" | "xl";
   className?: string;
   color?: string;
+  filled?: boolean;
+  [key: string]: any;
 }

@@ -4,10 +4,11 @@ import IconBaseSVG from "../base";
 export default function ArrowDownIcon({
   size = "md",
   className = "",
-  color = "#667085",
+  color,
+  ...props
 }: IconSVGProps) {
   return (
-    <IconBaseSVG size={size} className={className}>
+    <IconBaseSVG size={size} className={className} {...props}>
       <svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask
           id="mask0_64_663"
@@ -23,7 +24,7 @@ export default function ArrowDownIcon({
         <g mask="url(#mask0_64_663)">
           <path
             d="M12 15.8464L6 9.84641L7.4 8.44641L12 13.0464L16.6 8.44641L18 9.84641L12 15.8464Z"
-            fill={color}
+            fill={color ?? "currentColor"}
           />
         </g>
       </svg>

@@ -5,13 +5,8 @@ import {
   TextPriceIcon,
 } from "@/components/common/Typography/text-icon";
 import RatingStars from "@/components/RatingStars";
-import Icon from "@/components/common/Icon";
 
 import EditIcon from "@/components/common/Icon/icons/edit";
-import PhoneIcon from "@/assets/svg/icons/phone.svg";
-import GitHubIcon from "@/assets/svg/icons/github.svg";
-import LinkedInIcon from "@/assets/svg/icons/linkedin.svg";
-import Link from "next/link";
 import Button from "@/components/common/Button";
 import Toogle from "@/components/common/Toogle";
 import { TalentFull } from "@/types/Talent";
@@ -25,6 +20,9 @@ import useToogle from "@/hooks/useToogle";
 import ModalContent from "@/components/common/Container/ModalContent";
 import EditSocialNetworks from "../forms/edit-social-networks";
 import EditAvatar from "../forms/edit-avatar";
+import PhoneIcon from "@/components/common/Icon/icons/phone";
+import GitHubIcon from "@/components/common/Icon/icons/github";
+import LinkedInIcon from "@/components/common/Icon/icons/linkedin";
 
 export default function TalentProfileGeneralInfo({
   talent,
@@ -57,12 +55,13 @@ export default function TalentProfileGeneralInfo({
     <section className="col-span-12 flex gap-7 items-center relative">
       <div className="relative">
         <Avatar size="xl" />
-        <div
-          className="bg-white-0 p-3 rounded-full shadow-md absolute bottom-0 right-0 cursor-pointer hover:bg-white-10"
+        <Button
+          className="bg-white-0 !p-3 !rounded-full shadow-md absolute bottom-0 right-0"
           onClick={onEditAvatar}
-        >
-          <EditIcon />
-        </div>
+          color="smoke"
+          variant="text"
+          StartIcon={<EditIcon />}
+        />
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex gap-2">
@@ -77,6 +76,7 @@ export default function TalentProfileGeneralInfo({
             StartIcon={<EditIcon />}
             variant="text"
             className="!p-0"
+            color="smoke"
             onClick={onEditSalary}
           />
         </div>
@@ -90,28 +90,31 @@ export default function TalentProfileGeneralInfo({
           title="Ver CV"
           color="sky"
           variant="text"
-          intensity="light"
           EndIcon={<ArrowDownIcon color={palette.sky[10]} />}
           wide={false}
         >
           <Option>CV</Option>
           <Option>CV Fractal</Option>
         </Menu>
-        <Button variant="contained" color="green" startIcon={PhoneIcon}>
+        <Button
+          variant="contained"
+          color="green"
+          StartIcon={<PhoneIcon color="#fff" />}
+        >
           Contactar
         </Button>
       </div>
       <div className="flex gap-4 absolute right-0 bottom-0">
-        <Icon
-          src={GitHubIcon}
+        <GitHubIcon
           size="lg"
           className="cursor-pointer"
+          color="#98A2B3"
           onClick={onEditSocialNetwork}
         />
-        <Icon
-          src={LinkedInIcon}
+        <LinkedInIcon
           size="lg"
           className="cursor-pointer"
+          color="#98A2B3"
           onClick={onEditSocialNetwork}
         />
       </div>

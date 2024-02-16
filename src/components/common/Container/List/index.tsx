@@ -17,9 +17,13 @@ export default function ListContainer({
         <Typography variant="support" className="font-bold">
           {name}
         </Typography>
-        <Button variant="text" className="!p-0">
-          <AddIcon color="#667085" />
-        </Button>
+        <Button
+          variant="text"
+          color="smoke"
+          className="!p-0"
+          onClick={onAdd}
+          StartIcon={<AddIcon />}
+        />
       </div>
       <div
         className={`flex flex-wrap gap-2 ${className} ${

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CheckBar from "../../CheckBar";
-import { uuid } from "uuidv4";
+import { v4 as uuid } from "uuid";
 
 interface CustomFieldSetRadioProps {
   className?: string;

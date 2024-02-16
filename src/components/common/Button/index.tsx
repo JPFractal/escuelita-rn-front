@@ -9,7 +9,7 @@ import { start } from "repl";
 export interface ButtonProps {
   children?: React.ReactNode;
   variant?: "contained" | "outlined" | "text";
-  color?: "green" | "sky" | "gray" | "pink";
+  color?: "green" | "sky" | "gray" | "pink" | "smoke";
   intensity?: "light" | "dark";
   iconSize?: "md" | "xs" | "lg";
   startIcon?: string;
@@ -41,7 +41,7 @@ export default function Button({
 }: ButtonProps) {
   let styles =
     className +
-    " flex rounded-lg px-4 py-[10px] items-center capitalize font-semibold gap-2 justify-center";
+    " flex items-center justify-center gap-2 rounded-lg px-4 py-[10px] capitalize font-semibold";
 
   if (variant === "outlined")
     styles += ` border ${colors[color].border} ${colors[color].text}`;
@@ -51,7 +51,8 @@ export default function Button({
       intensity === "dark" ? "text-white-10" : colors[color].text
     }`;
 
-  if (variant === "text") styles += ` ${colors[color].text}`;
+  if (variant === "text")
+    styles += ` ${colors[color].text} ${colors[color].hover["light"]}`;
 
   const content = (
     <>

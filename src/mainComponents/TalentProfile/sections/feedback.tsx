@@ -3,7 +3,7 @@ import Feedback from "@/types/Feedback";
 import FeedbackCard from "@/mainComponents/Cards/FeedbackCard";
 
 import Button from "@/components/common/Button";
-import AddIcon from "@/assets/svg/icons/add.svg";
+import AddIcon from "@/components/common/Icon/icons/add";
 
 export default function TalentProfileFeedback({
   items,
@@ -18,10 +18,17 @@ export default function TalentProfileFeedback({
         </Typography>
       </div>
       {items.map((item) => (
-        <FeedbackCard key={item.id} feedback={item} />
+        <FeedbackCard key={"feedback-comment-" + item.id} feedback={item} />
       ))}
 
-      <Button startIcon={AddIcon} variant="text" color="gray" className="font-normal">Dar nuevo feedback</Button>
+      <Button
+        StartIcon={<AddIcon size="xs" />}
+        variant="text"
+        color="smoke"
+        className="font-normal !justify-normal"
+      >
+        Dar nuevo feedback
+      </Button>
     </section>
   );
 }

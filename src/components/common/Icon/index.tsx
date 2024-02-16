@@ -1,5 +1,5 @@
+import { is } from "@/constraints/Values/size-icons";
 import Image from "next/image";
-import { is } from "./size";
 import React from "react";
 
 interface IconProps {
@@ -17,13 +17,12 @@ export default function Icon({
 }: IconProps) {
   return (
     <Image
+      className={className}
       width={is[size]}
       height={is[size]}
       src={src}
       alt="icon"
-      className={className}
       {...props}
     />
   );
 }
-

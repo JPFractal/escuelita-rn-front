@@ -44,13 +44,16 @@ export default function CheckBar({
           checked ? "bg-sky-10" : "border border-gray-30"
         }`}
       >
-        {checked && <CheckIcon size="2xs" color="white" />}
+        {checked && <CheckIcon size="xl" color="white" />}
       </div>
 
       <input
         type={type}
         name={name}
         checked={checked}
+        onChange={(e) => {
+          e.target.checked = checked;
+        }}
         className="hidden"
         value={value}
       />

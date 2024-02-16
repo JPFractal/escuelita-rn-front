@@ -4,10 +4,11 @@ import IconBaseSVG from "../base";
 export default function CheckIcon({
   size = "md",
   className = "",
-  color = "#667085",
+  color,
+  ...props
 }: IconSVGProps) {
   return (
-    <IconBaseSVG size={size} className={className}>
+    <IconBaseSVG size={size} className={className} {...props}>
       <svg
         width="10"
         height="10"
@@ -17,10 +18,10 @@ export default function CheckIcon({
       >
         <path
           d="M8.33329 2.5L3.74996 7.08333L1.66663 5"
-          stroke={color}
-          stroke-width="1.66667"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          stroke={color ?? "currentColor"}
+          strokeWidth="1.66667"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </IconBaseSVG>

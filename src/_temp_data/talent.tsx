@@ -53,7 +53,7 @@ const talent = {
       score: 3,
     },
     {
-      id: 1,
+      id: 2,
       comment: "Ayudó siempre al equipo, es muy talentoso.",
       author: {
         id: 1,
@@ -72,8 +72,19 @@ const talent = {
         name: "FRACTAL",
       },
       position: "Desarrollador Full-Stack",
-      startDate: new Date(2020, 5, 6),
-      endDate: null,
+      start_date: new Date(2020, 5, 6),
+      end_date: new Date(2023, 5, 6),
+    },
+    {
+      id: 4,
+      type: "work",
+      organization: {
+        id: 1,
+        name: "FRACTAL Services",
+      },
+      position: "Líder de proyectos",
+      start_date: new Date(2023, 5, 6),
+      end_date: null,
     },
     {
       id: 2,
@@ -83,8 +94,8 @@ const talent = {
         name: "Pontificia Universidad Católica del Perú",
       },
       position: "Bachiller en Ingeniería de sistemas",
-      startDate: new Date(2015, 5, 6),
-      endDate: new Date(2021, 5, 6),
+      start_date: new Date(2015, 5, 6),
+      end_date: new Date(2021, 5, 6),
     },
     {
       id: 3,
@@ -94,13 +105,17 @@ const talent = {
         name: "Cibertec",
       },
       position: "Diplomado en Análisis de Datos",
-      startDate: new Date(2015, 5, 6),
-      endDate: new Date(2021, 5, 6),
+      start_date: new Date(2015, 5, 6),
+      end_date: new Date(2021, 5, 6),
     },
   ],
   certificates: [
     { id: 1, name: "Frontend", src: "/mock-data/certificate.svg" },
     { id: 2, name: "Backend", src: "/mock-data/certificate.svg" },
+  ],
+  languages: [
+    { id: 1, name: "Inglés", level: 4, checked: true },
+    { id: 2, name: "Español", level: 5, checked: false },
   ],
 };
 

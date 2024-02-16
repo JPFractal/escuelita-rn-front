@@ -8,7 +8,7 @@ export default function FeedbackCard({ feedback }: { feedback: Feedback }) {
     <div className="p-3 rounded-lg w-full flex gap-4 items-center">
       <Avatar size="md" src={feedback.author.photo} />
       <div className="flex flex-col gap-1 ">
-        <div className="flex justify-between w-60">
+        <div className="flex justify-between w-60 items-center">
           <Typography variant="text">{feedback.author.name}</Typography>
           <RatingStars rating={feedback.score} />
         </div>
