@@ -43,6 +43,7 @@ export default function TalentProfileLanguages({
           title="Edita tu experiencia"
           subtitle="La vida esta llena de cambios. Edita tu experiencia laboral."
           CloseButtonIcon={<TrashIcon color={palette.red[10]} size="xs" />}
+          confirmButtonText="Editar"
         >
           <FormFieldsLanguage language={language} />
         </ModalContent>

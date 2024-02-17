@@ -51,6 +51,7 @@ export default function TalentProfileCertificates({
           onCancel={onCloseCertificate}
           title="Agrega un archivo"
           subtitle="Sube tu nuevo certificado, diploma o algún archivo que respalde tus aptitudes."
+          confirmButtonText="Subir"
         >
           <AddCertificate />
         </ModalContent>

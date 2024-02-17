@@ -92,10 +92,8 @@ export default function TalentProfileGeneralInfo({
           variant="text"
           EndIcon={<ArrowDownIcon color={palette.sky[10]} />}
           wide={false}
-        >
-          <Option>CV</Option>
-          <Option>CV Fractal</Option>
-        </Menu>
+          items={["CV", "CV Fractal"]}
+        />
         <Button
           variant="contained"
           color="green"
@@ -144,6 +142,7 @@ export default function TalentProfileGeneralInfo({
           onCancel={onCloseAvatar}
           title="Modifica tu foto de perfil"
           subtitle="Sube una nueva foto de perfil."
+          confirmButtonText="Subir"
         >
           <EditAvatar />
         </ModalContent>

@@ -43,6 +43,7 @@ export default function TalentProfileOrganizationsLabor({
           title="Edita tu experiencia"
           subtitle="La vida esta llena de cambios. Edita tu experiencia laboral."
           CloseButtonIcon={<TrashIcon color={palette.red[10]} size="xs" />}
+          confirmButtonText="Editar"
         >
           <FormFieldsOrganizationLabor experience={organization} />
         </ModalContent>

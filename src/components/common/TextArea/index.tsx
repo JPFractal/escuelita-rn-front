@@ -12,7 +12,12 @@ import {
   INPUT_STYLE_NORMAL,
 } from "@/constraints/Styles/form-control";
 
-export default function TextField({
+interface TextAreaProps extends TextFieldProps {
+  rows?: number;
+  cols?: number;
+}
+
+export default function TextArea({
   value = "",
   defaultValue = "",
   name = "",
@@ -23,41 +28,25 @@ export default function TextField({
   disabled = false,
   className = "",
   classNameInput = "",
-  type = "text",
   onChange = (e: any) => (e.target.value = e.target.value),
-}: TextFieldProps) {
-  const [_type, setType] = useState(type);
-
+  rows = 3,
+  cols,
+}: TextAreaProps) {
   return (
     <FormControl {...{ label, fullwidth, className }}>
       <div className="w-full relative">
-        <input
+        <textarea
           className={`${
             error ? INPUT_STYLE_ERROR : INPUT_STYLE_NORMAL
           } ${classNameInput}`}
-          type={_type}
           name={name}
           placeholder={placeholder}
           {...(value ? { value } : { defaultValue })}
           disabled={disabled}
           onChange={onChange}
+          rows={rows}
+          cols={cols}
         />
-
-        {type === "password" && (
-          <Button
-            variant="text"
-            color="smoke"
-            className="absolute bottom-0 right-0 bg-white-0 h-full rounded-s-none border border-gray-30 !border-s-0 hover:bg-white-0"
-            onClick={(e) => setType(_type === "password" ? "text" : "password")}
-            title={_type === "password" ? "Mostrar" : "Ocultar"}
-          >
-            {_type === "password" ? (
-              <RevealIcon size="lg" />
-            ) : (
-              <HideIcon size="lg" />
-            )}
-          </Button>
-        )}
       </div>
     </FormControl>
   );

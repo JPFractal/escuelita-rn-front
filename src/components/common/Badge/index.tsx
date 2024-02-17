@@ -5,7 +5,6 @@ import { MouseEventHandler } from "react";
 export interface BadgeProps {
   wide?: boolean;
   children: React.ReactNode;
-  component?: "span" | "button";
   color?: "gray" | "sky" | "pink";
   className?: string;
   onClick?: MouseEventHandler;
@@ -35,7 +34,6 @@ export default function Badge({
   className = "",
   color = "gray",
   wide = false,
-  component = "span",
   onClick = () => {},
 }: BadgeProps) {
   let styles =
@@ -48,12 +46,9 @@ export default function Badge({
 
   const inner = <>{children}</>;
 
-  if (component === "button")
-    return (
-      <button className={styles} onClick={onClick}>
-        {inner}
-      </button>
-    );
-
-  return <span className={styles}>{inner}</span>;
+  return (
+    <span className={styles} onClick={onClick}>
+      {inner}
+    </span>
+  );
 }

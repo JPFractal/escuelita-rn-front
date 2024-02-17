@@ -10,6 +10,7 @@ export default function CheckIcon({
   return (
     <IconBaseSVG size={size} className={className} {...props}>
       <svg
+        className="w-full h-full"
         width="10"
         height="10"
         viewBox="0 0 10 10"

@@ -1,25 +1,40 @@
 import { v4 } from "uuid";
 import Typography from "../Typography";
 import FormControl from "../FormControl";
+import {
+  INPUT_STYLE_ERROR,
+  INPUT_STYLE_NORMAL,
+} from "@/constraints/Styles/form-control";
+
+interface SelectProps {
+  label?: string;
+  fullwidth?: boolean;
+  className?: string;
+  classNameSelect?: string;
+  placeholder?: string;
+  error?: boolean;
+  options?: any[];
+  value?: string;
+  defaultValue?: string;
+}
 
 export default function Select({
   label,
   fullwidth = false,
   className = "",
+  classNameSelect = "",
   placeholder,
   error = false,
   options = [],
   value,
   defaultValue,
-}: any) {
+}: SelectProps) {
   return (
     <FormControl {...{ label, fullwidth, className }}>
       <select
-        className={`p-2.5 rounded-lg border focus:outline outline-4 ${
-          error
-            ? "border-red-0 outline-red-10/30 text-red-10 placeholder-red-10/60"
-            : "border-gray-30 outline-sky-10/30"
-        } w-full`}
+        className={`${
+          error ? INPUT_STYLE_ERROR : INPUT_STYLE_NORMAL
+        } ${classNameSelect}`}
         {...(value ? { value } : { defaultValue })}
       >
         <option>{placeholder}</option>

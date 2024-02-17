@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/mainComponents/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/constraints/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/themes/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
