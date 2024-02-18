@@ -4,7 +4,6 @@ import Icon from "../Icon";
 
 import { button as colors } from "@/themes/colors";
 import React, { MouseEventHandler } from "react";
-import { start } from "repl";
 
 export interface ButtonProps {
   children?: React.ReactNode;

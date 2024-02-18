@@ -26,7 +26,7 @@ export default function CheckBox({
             checked ? "bg-sky-10" : "border border-gray-30"
           }`}
         >
-          {checked && <CheckIcon size="2xs" color="white" />}
+          {checked && <CheckIcon color="white" />}
         </div>
 
         <Typography variant="text-2">{label}</Typography>

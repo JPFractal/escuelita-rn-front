@@ -8,10 +8,8 @@ import RatingStars from "@/components/RatingStars";
 
 import EditIcon from "@/components/common/Icon/icons/edit";
 import Button from "@/components/common/Button";
-import Toogle from "@/components/common/Toogle";
 import { TalentFull } from "@/types/Talent";
 import Menu from "@/components/common/Menu";
-import Option from "@/components/common/Menu/option";
 import ArrowDownIcon from "@/components/common/Icon/icons/arrow-down";
 import { palette } from "@/themes/colors";
 import Modal from "@/components/common/Modal";
@@ -23,6 +21,7 @@ import EditAvatar from "../forms/edit-avatar";
 import PhoneIcon from "@/components/common/Icon/icons/phone";
 import GitHubIcon from "@/components/common/Icon/icons/github";
 import LinkedInIcon from "@/components/common/Icon/icons/linkedin";
+import MenuToogle from "@/components/common/Menu/toogle-list";
 
 export default function TalentProfileGeneralInfo({
   talent,
@@ -64,9 +63,12 @@ export default function TalentProfileGeneralInfo({
         />
       </div>
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <Typography variant="text">{talent.name}</Typography>
-          <Toogle on />
+          <MenuToogle
+            initItems={["Mis favoritos", "Backups"]}
+            initMemory={["Backups"]}
+          />
         </div>
         <div className="flex gap-2">
           <Typography variant="support">{talent.role}</Typography>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Typography from "../Typography";
 import Button from "../Button";
 import RevealIcon from "../Icon/icons/reveal";
 import HideIcon from "../Icon/icons/hide";
@@ -13,7 +12,7 @@ import {
 } from "@/constraints/Styles/form-control";
 
 export default function TextField({
-  value = "",
+  value,
   defaultValue = "",
   name = "",
   label = "",
@@ -38,7 +37,7 @@ export default function TextField({
           type={_type}
           name={name}
           placeholder={placeholder}
-          {...(value ? { value } : { defaultValue })}
+          {...(typeof value !== "undefined" ? { value } : { defaultValue })}
           disabled={disabled}
           onChange={onChange}
         />

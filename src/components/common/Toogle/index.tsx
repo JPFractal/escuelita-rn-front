@@ -8,7 +8,7 @@ export default function Toogle({ on = false }: { on?: boolean }) {
   const { flag, toogle } = useToogle(on);
 
   return (
-    <button onClick={toogle} className="focus:border-none focus:outline-none">
+    <button onClick={toogle} className="focus:border-none focus:outline-none flex justify-center items-center">
       <HeartIcon filled={flag} color={palette.pink[10]} />
     </button>
   );

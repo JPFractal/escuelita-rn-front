@@ -4,11 +4,11 @@
 
 ::-webkit-scrollbar {
     width: 0.5em;
-    /* Ajusta el ancho según sea necesario */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: #EAECF0;
+    border-radius: 8px;
 }
 
 .material-symbols-outlined {
