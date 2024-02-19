@@ -6,7 +6,7 @@ import Button from "@/components/common/Button";
 import AddIcon from "@/components/common/Icon/icons/add";
 import Modal from "@/components/common/Modal";
 import ModalContent from "@/components/common/Container/ModalContent";
-import FormFieldsFeedback from "../forms/add-feedback";
+import FormFieldsFeedback from "@/forms/form-fields/feedback";
 import useToogle from "@/hooks/useToogle";
 
 export default function TalentProfileFeedback({

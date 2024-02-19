@@ -8,7 +8,7 @@ import useToogle from "@/hooks/useToogle";
 import Certificate from "@/types/Certificate";
 import Image from "next/image";
 import { useState } from "react";
-import AddCertificate from "../forms/add-certificate";
+import AddCertificate from "@/forms/form-fields/certificate";
 
 export default function TalentProfileCertificates({
   items = [],

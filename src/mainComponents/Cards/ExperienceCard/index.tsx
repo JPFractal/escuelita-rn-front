@@ -3,11 +3,11 @@ import Button from "@/components/common/Button";
 import EditableCard from "@/components/common/Container/EditableCard";
 import EditIcon from "@/components/common/Icon/icons/edit";
 import Typography from "@/components/common/Typography";
-import EditSocialNetworks from "@/mainComponents/TalentProfile/forms/edit-social-networks";
+import EditSocialNetworks from "@/forms/form-fields/social-networks";
 import Experience from "@/types/Experience";
 import { MouseEventHandler } from "react";
 
-export default function OrganizationCard({
+export default function ExperienceCard({
   experience,
   onAction = () => {},
 }: {
@@ -31,7 +31,10 @@ export default function OrganizationCard({
         <div className="flex flex-col gap-1">
           <Typography variant="text">{experience.organization.name}</Typography>
           <div className="flex gap-4">
-            <Typography variant="support">{experience.position}</Typography>
+            <Typography variant="support">
+              {experience.grade && `${experience.grade} en `}
+              {experience.position}
+            </Typography>
             <Typography variant="support">
               {start_date} - {end_date}
             </Typography>

@@ -17,6 +17,10 @@ interface DateIntervalProps extends TextFieldProps {
   labelSecondInput?: string;
   valueFirstInput?: string;
   valueSecondInput?: string;
+  firstInputProps?: any;
+  secondInputProps?: any;
+  firstDateFieldProps?: any;
+  secondDateFieldProps?: any;
 }
 
 export default function DateFieldInterval({
@@ -26,8 +30,12 @@ export default function DateFieldInterval({
   nameSecondInput = "date_end",
   labelFirstInput = "Start Date",
   labelSecondInput = "End Date",
-  valueFirstInput = "",
-  valueSecondInput = "",
+  valueFirstInput,
+  valueSecondInput,
+  firstInputProps = {},
+  secondInputProps = {},
+  firstDateFieldProps = {},
+  secondDateFieldProps = {},
   alternative = "",
 }: DateIntervalProps) {
   const { flag, toogle } = useToogle(
@@ -39,10 +47,10 @@ export default function DateFieldInterval({
     handleChange,
     reset,
     setValue,
-  } = useInputHandler(valueSecondInput);
+  } = useInputHandler(valueSecondInput ?? "");
 
   useEffect(() => {
-    if (flag) setValue("--");
+    if (flag) setValue(alternative);
     else reset();
   }, [flag]);
 
@@ -54,15 +62,18 @@ export default function DateFieldInterval({
         label={labelFirstInput}
         name={nameFirstInput}
         value={valueFirstInput}
+        inputProps={firstInputProps}
+        {...firstDateFieldProps}
       />
       <TextField
         className="col-span-6"
         type={"date"}
         label={labelSecondInput}
         name={nameSecondInput}
-        value={_value}
-        onChange={handleChange}
+        {...(flag ? { value: _value } : { value: valueSecondInput })}
         disabled={flag}
+        inputProps={{ ...secondInputProps, onChange: handleChange }}
+        {...secondDateFieldProps}
       />
       <CheckBox
         className="col-span-12"

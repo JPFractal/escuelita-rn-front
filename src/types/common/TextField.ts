@@ -11,4 +11,6 @@ export default interface TextFieldProps {
   className?: string;
   classNameInput?: string;
   type?: string;
+  helperText?: string;
+  inputProps?: any;
 }

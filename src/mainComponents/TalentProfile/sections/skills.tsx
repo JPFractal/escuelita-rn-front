@@ -3,7 +3,7 @@ import Typography from "@/components/common/Typography";
 import Badge from "@/components/common/Badge";
 import ListContainer from "@/components/common/Container/List";
 import Modal from "@/components/common/Modal";
-import FormFieldsSkill from "../forms/skill";
+import FormFieldsSkill from "@/forms/form-fields/skill";
 import useToogle from "@/hooks/useToogle";
 import ModalContent from "@/components/common/Container/ModalContent";
 

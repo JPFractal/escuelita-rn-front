@@ -10,6 +10,7 @@ interface ModalContentProps {
   title?: string;
   subtitle?: string;
   confirmButtonText?: string;
+  confirmButtonType?: "button" | "submit" | "reset";
   cancelButtonText?: string;
   CloseButtonIcon?: ReactNode;
   children: ReactNode;
@@ -21,6 +22,7 @@ export default function ModalContent({
   onConfirm = () => {},
   title = "",
   subtitle = "",
+  confirmButtonType = "button",
   confirmButtonText = "Agregar",
   cancelButtonText = "Cancelar",
   CloseButtonIcon,
@@ -50,7 +52,11 @@ export default function ModalContent({
       >
         {cancelButtonText}
       </Button>
-      <Button className="col-span-6" onClick={onConfirm}>
+      <Button
+        className="col-span-6"
+        onClick={onConfirm}
+        type={confirmButtonType}
+      >
         {confirmButtonText}
       </Button>
     </Paper>

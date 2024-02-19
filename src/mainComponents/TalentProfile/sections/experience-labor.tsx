@@ -1,4 +1,3 @@
-import OrganizationCard from "@/mainComponents/Cards/OrganizationCard";
 import Experience from "@/types/Experience";
 import ListContainer from "@/components/common/Container/List";
 import Modal from "@/components/common/Modal";
@@ -7,9 +6,10 @@ import { useState } from "react";
 import useToogle from "@/hooks/useToogle";
 import TrashIcon from "@/components/common/Icon/icons/trash";
 import { palette } from "@/themes/colors";
-import FormFieldsOrganizationLabor from "../forms/organization-labor";
+import FormFieldsOrganizationLabor from "@/forms/form-fields/experience-labor";
+import ExperienceCard from "@/mainComponents/Cards/ExperienceCard";
 
-export default function TalentProfileOrganizationsLabor({
+export default function TalentProfileExperienceLabor({
   title = "",
   items = [],
 }: {
@@ -29,7 +29,7 @@ export default function TalentProfileOrganizationsLabor({
     <section className="col-span-12 ">
       <ListContainer name={title} onAdd={addOn}>
         {items.map((item: Experience) => (
-          <OrganizationCard
+          <ExperienceCard
             key={"experience-" + item.id}
             experience={item}
             onAction={() => handleEdit(item)}

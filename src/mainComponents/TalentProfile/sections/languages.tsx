@@ -7,7 +7,7 @@ import TrashIcon from "@/components/common/Icon/icons/trash";
 import { palette } from "@/themes/colors";
 import LanguageCard from "@/mainComponents/Cards/LanguageCard";
 import Language from "@/types/Language";
-import FormFieldsLanguage from "../forms/language";
+import FormFieldsLanguage from "@/forms/form-fields/language";
 
 export default function TalentProfileLanguages({
   title = "",

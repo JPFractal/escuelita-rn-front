@@ -4,7 +4,7 @@ import TextFieldAndCheckbox from "@/components/common/TextField/TextFieldAndChec
 import Experience from "@/types/Experience";
 import dateParser from "@/utils/date-parser";
 
-export default function FormFieldsOrganizationLabor({
+export default function FormFieldsExperienceLabor({
   experience,
 }: {
   experience?: Experience;

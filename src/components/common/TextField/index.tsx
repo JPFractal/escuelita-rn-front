@@ -10,6 +10,7 @@ import {
   INPUT_STYLE_ERROR,
   INPUT_STYLE_NORMAL,
 } from "@/constraints/Styles/form-control";
+import Typography from "../Typography";
 
 export default function TextField({
   value,
@@ -24,6 +25,8 @@ export default function TextField({
   classNameInput = "",
   type = "text",
   onChange = (e: any) => (e.target.value = e.target.value),
+  inputProps,
+  helperText,
 }: TextFieldProps) {
   const [_type, setType] = useState(type);
 
@@ -40,6 +43,7 @@ export default function TextField({
           {...(typeof value !== "undefined" ? { value } : { defaultValue })}
           disabled={disabled}
           onChange={onChange}
+          {...inputProps}
         />
 
         {type === "password" && (
@@ -57,6 +61,10 @@ export default function TextField({
             )}
           </Button>
         )}
+
+        <Typography className={`mt-2 ${error && "text-red-10"}`}>
+          {helperText}
+        </Typography>
       </div>
     </FormControl>
   );

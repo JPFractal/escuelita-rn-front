@@ -6,7 +6,7 @@ import Typography from "@/components/common/Typography";
 import useToogle from "@/hooks/useToogle";
 import { TalentFull } from "@/types/Talent";
 import Link from "next/link";
-import FormFieldsDescription from "../forms/edit-description";
+import FormFieldsDescription from "@/forms/form-fields/description";
 
 export default function TalentProfileDescription({
   talent,

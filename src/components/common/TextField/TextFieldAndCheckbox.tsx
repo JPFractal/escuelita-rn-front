@@ -11,6 +11,7 @@ interface TextFieldAndCheckboxProps extends TextFieldProps {
   value?: string;
   alternative?: string;
   checkboxLabel?: string;
+  useFormIntegration?: any;
 }
 
 export default function TextFieldAndCheckbox({
@@ -23,18 +24,35 @@ export default function TextFieldAndCheckbox({
   alternative = "",
   checkboxLabel = "Checkbox label",
   type = "text",
+  inputProps,
+  error = false,
+  helperText,
+  useFormIntegration,
 }: TextFieldAndCheckboxProps) {
+  /* The main problem with this component is that i was using a controller input, but with use form integration,
+  i have to use uncontrolled input and was a terrible headache, fortunately it has been solved.*/
+
   const { flag, toogle } = useToogle();
+
+  const initValue =
+    useFormIntegration?.getValues(inputProps?.name ?? name) ?? value;
+
   const {
     value: _value,
     handleChange,
     reset,
     setValue,
-  } = useInputHandler(value);
+    defaultValue,
+  } = useInputHandler(initValue);
 
   useEffect(() => {
-    if (flag) setValue(alternative);
-    else reset();
+    if (flag) {
+      setValue(alternative);
+      useFormIntegration?.setValue(inputProps?.name ?? name, alternative);
+    } else {
+      reset();
+      useFormIntegration?.setValue(inputProps?.name ?? name, defaultValue);
+    }
   }, [flag]);
 
   return (
@@ -42,12 +60,13 @@ export default function TextFieldAndCheckbox({
       <TextField
         label={label}
         placeholder={placeholder}
-        name={name}
-        value={_value}
-        onChange={handleChange}
         fullwidth={fullwidth}
+        name={name}
         disabled={flag}
         type={type}
+        value={String(_value)}
+        inputProps={{ ...inputProps, onChange: handleChange }}
+        {...{ error, helperText }}
       />
       <CheckBox label={checkboxLabel} checked={flag} onClick={toogle} />
     </div>
