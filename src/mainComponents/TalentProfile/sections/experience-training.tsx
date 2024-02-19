@@ -3,7 +3,7 @@ import ListContainer from "@/components/common/Container/List";
 import ModalContent from "@/components/common/Container/ModalContent";
 import Modal from "@/components/common/Modal";
 import useToogle from "@/hooks/useToogle";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import TrashIcon from "@/components/common/Icon/icons/trash";
 import { palette } from "@/themes/colors";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,7 @@ import { FIELD_LIST } from "@/forms/form-validations/experience-training";
 import FormFieldsExperienceTraining from "@/forms/form-fields/experience-training";
 import FormContextProvider from "@/context/form-context";
 import ExperienceCard from "@/mainComponents/Cards/ExperienceCard";
+import ConfirmActionModal from "@/components/common/ConfirmActionModal/indext";
 
 export default function TalentProfileExperienceTraining({
   title = "",
@@ -22,14 +23,36 @@ export default function TalentProfileExperienceTraining({
 }) {
   const { flag, on, off } = useToogle();
   const { flag: editForm, off: isAdd, on: isEdit } = useToogle();
+  const { flag: action, on: actionDeleted, off: actionEdit } = useToogle();
+  const {
+    flag: confirmModal,
+    off: closeConfirm,
+    on: openConfirm,
+  } = useToogle();
+
   const methods = useForm({ defaultValues: FIELD_LIST });
 
   // prettier-ignore
   const handleAdd = () => { isAdd(); on(); };
-  const handleEdit = (item: Experience) => {
+  const handleModalEdit = (item: Experience) => {
     setValues({ experience: item, setter: methods.setValue });
     isEdit();
     on();
+  };
+
+  const onConfirm = useCallback(() => {
+    if (action) console.log("element deleted", methods.getValues());
+    else console.log("element edited", methods.getValues());
+  }, [action]);
+
+  const handleDelete = (item: any) => {
+    actionDeleted();
+    openConfirm();
+  };
+
+  const handleEdit = (item: any) => {
+    actionEdit();
+    openConfirm();
   };
 
   useEffect(methods.clearErrors, [flag]);
@@ -41,7 +64,7 @@ export default function TalentProfileExperienceTraining({
           <ExperienceCard
             key={item.id}
             experience={item}
-            onAction={() => handleEdit(item)}
+            onAction={() => handleModalEdit(item)}
           />
         ))}
       </ListContainer>
@@ -53,7 +76,9 @@ export default function TalentProfileExperienceTraining({
           onSubmit={onSubmit}
         >
           <ModalContent
+            onClose={() => handleDelete(methods.getValues())}
             onCancel={off}
+            onConfirm={handleEdit}
             title={
               editForm
                 ? "Edita tu experiencia educativa"
@@ -65,7 +90,7 @@ export default function TalentProfileExperienceTraining({
                 : "Describe y agrega tu nueva experiencia laboral."
             }
             // prettier-ignore
-            CloseButtonIcon={editForm && <TrashIcon color={palette.red[10]} size="xs" />}
+            CloseButtonIcon={editForm && <TrashIcon color={palette.red[10]} />}
             confirmButtonText={editForm ? "Editar" : "Agregar"}
             confirmButtonType="submit"
           >
@@ -73,6 +98,12 @@ export default function TalentProfileExperienceTraining({
           </ModalContent>
         </FormContextProvider>
       </Modal>
+
+      <ConfirmActionModal
+        open={confirmModal}
+        onConfirm={onConfirm}
+        onClose={closeConfirm}
+      />
     </section>
   );
 }
