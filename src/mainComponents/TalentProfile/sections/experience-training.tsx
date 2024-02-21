@@ -8,7 +8,7 @@ import TrashIcon from "@/components/common/Icon/icons/trash";
 import { palette } from "@/themes/colors";
 import { useForm } from "react-hook-form";
 import { onSubmit, setValues } from "@/forms/form-actions/experience-training";
-import { FIELD_LIST } from "@/forms/form-validations/experience-training";
+import { EXPERIENCE_FIELD_LIST } from "@/forms/form-validations/experience-training";
 import FormFieldsExperienceTraining from "@/forms/form-fields/experience-training";
 import FormContextProvider from "@/context/form-context";
 import ExperienceCard from "@/mainComponents/Cards/ExperienceCard";
@@ -30,7 +30,7 @@ export default function TalentProfileExperienceTraining({
     on: openConfirm,
   } = useToogle();
 
-  const methods = useForm({ defaultValues: FIELD_LIST });
+  const methods = useForm({ defaultValues: EXPERIENCE_FIELD_LIST });
 
   // prettier-ignore
   const handleAdd = () => { isAdd(); on(); };
@@ -70,11 +70,7 @@ export default function TalentProfileExperienceTraining({
       </ListContainer>
 
       <Modal open={flag} onClose={off}>
-        <FormContextProvider
-          externalMethods={methods}
-          initConfig={{ defaultValues: FIELD_LIST }}
-          onSubmit={onSubmit}
-        >
+        <FormContextProvider externalMethods={methods} onSubmit={onSubmit}>
           <ModalContent
             onClose={() => handleDelete(methods.getValues())}
             onCancel={off}

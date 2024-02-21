@@ -8,6 +8,7 @@ import { palette } from "@/themes/colors";
 import LanguageCard from "@/mainComponents/Cards/LanguageCard";
 import Language from "@/types/Language";
 import FormFieldsLanguage from "@/forms/form-fields/language";
+import ModalADE from "@/components/ModalADE";
 
 export default function TalentProfileLanguages({
   title = "",
@@ -16,48 +17,51 @@ export default function TalentProfileLanguages({
   title?: string;
   items: Array<Language>;
 }) {
-  const { flag: editFlag, on: editOn, off: editOff } = useToogle();
-  const { flag: addFlag, on: addOn, off: addOff } = useToogle();
+  const { flag: flagModal, on: onModal, off: offModal } = useToogle();
+  const { flag: typeAction, on: isAdd, off: isEdit } = useToogle();
   const [language, setLanguage] = useState<Language>(items[0]);
+
+  function addTrigger() {
+    isAdd();
+    onModal();
+  }
+
+  function editTrigger(item: Language) {
+    isEdit();
+    onModal();
+  }
 
   const handleEdit = (item: Language) => {
     setLanguage(item);
-    editOn();
   };
 
   return (
     <section className="col-span-12 ">
-      <ListContainer name={title} onAdd={addOn}>
+      <ListContainer name={title} onAdd={addTrigger}>
         {items.map((item: Language) => (
           <LanguageCard
             key={"experience-" + item.id}
             language={item}
-            onAction={() => handleEdit(item)}
+            onAction={() => editTrigger(item)}
           />
         ))}
       </ListContainer>
 
-      <Modal open={editFlag} onClose={editOff}>
-        <ModalContent
-          onCancel={editOff}
-          title="Edita tu experiencia"
-          subtitle="La vida esta llena de cambios. Edita tu experiencia laboral."
-          CloseButtonIcon={<TrashIcon color={palette.red[10]} />}
-          confirmButtonText="Editar"
-        >
-          <FormFieldsLanguage language={language} />
-        </ModalContent>
-      </Modal>
-
-      <Modal open={addFlag} onClose={addOff}>
-        <ModalContent
-          onCancel={addOff}
-          title="Agrega una nueva experiencia"
-          subtitle="Describe y agrega tu nueva experiencia laboral."
-        >
-          <FormFieldsLanguage />
-        </ModalContent>
-      </Modal>
+      <ModalADE
+        open={flagModal}
+        onClose={offModal}
+        isAdd
+        addText={{
+          title: "Agrega un nuevo idioma",
+          subtitle: "Agrega un nuevo idioma aprendido.",
+        }}
+        editText={{
+          title: "Edita tu habilidad en el idioma",
+          subtitle: "Edita tu habilidad en el idioma",
+        }}
+      >
+        <FormFieldsLanguage language={language} />
+      </ModalADE>
     </section>
   );
 }

@@ -8,7 +8,7 @@ export default function FormContextProvider({
   externalMethods,
 }: {
   children: ReactNode;
-  initConfig: any;
+  initConfig?: any;
   onSubmit: any;
   externalMethods?: any;
 }) {
