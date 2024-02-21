@@ -1,4 +1,4 @@
-export const FIELD_LIST = {
+export const EXPERIENCE_FIELD_LIST = {
   id: "",
   organization: "",
   position: "",
@@ -7,7 +7,7 @@ export const FIELD_LIST = {
   end_date: "",
 };
 
-export const VALIDATORS = {
+export const EXPERIENCE_VALIDATORS = {
   organization: {
     required: true,
   },

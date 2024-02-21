@@ -20,6 +20,7 @@ export interface ButtonProps {
   title?: string;
   type?: "button" | "submit" | "reset";
   onClick?: MouseEventHandler;
+  capitalize?: boolean;
 }
 
 export default function Button({
@@ -37,10 +38,11 @@ export default function Button({
   type = "button",
   title = "",
   href,
+  capitalize = true,
 }: ButtonProps) {
-  let styles =
-    className +
-    " flex items-center justify-center gap-2 rounded-lg px-4 py-[10px] capitalize font-semibold";
+  let styles = `flex items-center justify-center gap-2 rounded-lg px-4 py-[10px] font-semibold ${
+    capitalize && "capitalize"
+  } ${className} `;
 
   if (variant === "outlined")
     styles += ` border ${colors[color].border} ${colors[color].text}`;

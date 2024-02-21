@@ -13,15 +13,15 @@ import Menu from "@/components/common/Menu";
 import ArrowDownIcon from "@/components/common/Icon/icons/arrow-down";
 import { palette } from "@/themes/colors";
 import Modal from "@/components/common/Modal";
-import EditSalary from "@/forms/form-fields/salary";
+import FormFieldsSalary from "@/forms/form-fields/salary";
 import useToogle from "@/hooks/useToogle";
 import ModalContent from "@/components/common/Container/ModalContent";
-import EditSocialNetworks from "@/forms/form-fields/social-networks";
 import EditAvatar from "@/forms/form-fields/avatar";
 import PhoneIcon from "@/components/common/Icon/icons/phone";
 import GitHubIcon from "@/components/common/Icon/icons/github";
 import LinkedInIcon from "@/components/common/Icon/icons/linkedin";
 import MenuToogle from "@/components/common/Menu/toogle-list";
+import FormFieldsSocialNetworks from "@/forms/form-fields/social-networks";
 
 export default function TalentProfileGeneralInfo({
   talent,
@@ -125,7 +125,7 @@ export default function TalentProfileGeneralInfo({
           title="Agrega tu banda salarial"
           subtitle="Agrega el rango de tus expectativas salariales."
         >
-          <EditSalary talent={talent} />
+          <FormFieldsSalary talent={talent} />
         </ModalContent>
       </Modal>
 
@@ -135,7 +135,7 @@ export default function TalentProfileGeneralInfo({
           title="Agrega tus medios sociales"
           subtitle="Agrega y muestra tus medios sociales."
         >
-          <EditSocialNetworks talent={talent} />
+          <FormFieldsSocialNetworks talent={talent} />
         </ModalContent>
       </Modal>
 

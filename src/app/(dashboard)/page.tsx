@@ -6,15 +6,10 @@ import Button from "@/components/common/Button";
 
 import AddIcon from "@/assets/svg/icons/add.svg";
 import TalentCarousel from "@/mainComponents/TalentCarousel";
-import Modal from "@/components/common/Modal";
-import useToogle from "@/hooks/useToogle";
-import Paper from "@/components/common/Container/Paper/intex";
-import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="max-w-screen-2xl py-4 px-10 mx-auto grid gap-4 grid-cols-12">
         <div className="col-span-12 flex gap-4 flex-col">
           <div className="flex gap-4">
@@ -23,7 +18,12 @@ export default function Home() {
                 {/* <Typography variant="support">
               33 resultados disponibles para “Full-stack developer”
             </Typography> */}
-                <Button variant="outlined" color="sky" startIcon={AddIcon}>
+                <Button
+                  variant="outlined"
+                  color="sky"
+                  startIcon={AddIcon}
+                  href="/new-talent"
+                >
                   Nuevo talento
                 </Button>
               </div>

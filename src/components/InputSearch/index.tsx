@@ -1,6 +1,4 @@
-import Image from "next/image";
 import MagnifyingGlassIcon from "@/assets/svg/icons/magnifying-glass.svg";
-import colors from "@/theme/colors";
 import Icon from "../common/Icon";
 
 export default function InputSearch() {

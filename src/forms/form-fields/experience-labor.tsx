@@ -1,3 +1,5 @@
+"use client";
+
 import DateFieldInterval from "@/components/DateFieldInterval";
 import TextField from "@/components/common/TextField";
 import TextFieldAndCheckbox from "@/components/common/TextField/TextFieldAndCheckbox";

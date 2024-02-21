@@ -2,18 +2,22 @@ import CustomFieldSetRadio from "@/components/common/Container/CustomFieldSetRad
 import TextField from "@/components/common/TextField";
 import { TalentFull } from "@/types/Talent";
 
-export default function EditSocialNetworks({ talent }: { talent: TalentFull }) {
+export default function FormFieldsSocialNetworks({
+  talent,
+}: {
+  talent?: TalentFull;
+}) {
   return (
     <div className="flex flex-col gap-4">
       <TextField
         fullwidth
-        defaultValue={talent.linkedin_url}
+        defaultValue={talent?.linkedin_url}
         label="Link de LinkedIn"
         placeholder="https://example.com/username"
       />
       <TextField
         fullwidth
-        defaultValue={talent.github_url}
+        defaultValue={talent?.github_url}
         label="Link de GitHub"
         placeholder="https://example.com/username"
       />
