@@ -1,5 +1,7 @@
+import Button from "@/components/common/Button";
 import UploadCard from "@/components/common/Card/UploadCard";
 import SectionContainer from "@/components/common/Container/SectionContainer";
+import AddIcon from "@/components/common/Icon/icons/add";
 import FormContextProvider from "@/context/form-context";
 import FormFieldsExperienceLabor from "@/forms/form-fields/experience-labor";
 import FormFieldsExperienceTraining from "@/forms/form-fields/experience-training";
@@ -40,9 +42,15 @@ export default function TalentRegister({
         </SectionContainer>
         <SectionContainer title="Habilidades técnicas">
           <FormFieldsSkill tech />
+          <Button StartIcon={<AddIcon />} variant="text" color="sky" className="w-fit">
+            Agregar más
+          </Button>
         </SectionContainer>
         <SectionContainer title="Habilidades blandas">
           <FormFieldsSkill />
+          <Button StartIcon={<AddIcon />} variant="text" color="sky" className="w-fit">
+            Agregar más
+          </Button>
         </SectionContainer>
         <SectionContainer title="Experiencias laborales">
           <FormFieldsExperienceLabor />
