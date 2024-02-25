@@ -10,6 +10,7 @@ export default function ListContainer({
   mainContainerClass = "",
   axis = 1,
   onAdd = () => {},
+  control = false,
 }: ListContainerProps) {
   return (
     <div className={"flex flex-col gap-3 " + mainContainerClass}>
@@ -17,13 +18,15 @@ export default function ListContainer({
         <Typography variant="support" className="font-bold">
           {name}
         </Typography>
-        <Button
-          variant="text"
-          color="smoke"
-          className="!p-0"
-          onClick={onAdd}
-          StartIcon={<AddIcon />}
-        />
+        {control && (
+          <Button
+            variant="text"
+            color="smoke"
+            className="!p-0"
+            onClick={onAdd}
+            StartIcon={<AddIcon />}
+          />
+        )}
       </div>
       <div
         className={`flex flex-wrap gap-2 ${className} ${

@@ -22,12 +22,15 @@ import PhoneIcon from "@/components/common/Icon/icons/phone";
 import GitHubIcon from "@/components/common/Icon/icons/github";
 import LinkedInIcon from "@/components/common/Icon/icons/linkedin";
 import MenuToogle from "@/components/common/Menu/toogle-list";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileGeneralInfo({
   talent,
 }: {
   talent: TalentFull;
 }) {
+  const { isAdmin } = useAuth();
+
   const meanScore =
     talent.feedbacks.reduce((acum, feeback) => (acum += feeback.score), 0) /
     talent.feedbacks.length;
@@ -54,13 +57,15 @@ export default function TalentProfileGeneralInfo({
     <section className="col-span-12 flex gap-7 items-center relative">
       <div className="relative">
         <Avatar size="xl" />
-        <Button
-          className="bg-white-0 !p-3 !rounded-full shadow-md absolute bottom-0 right-0"
-          onClick={onEditAvatar}
-          color="smoke"
-          variant="text"
-          StartIcon={<EditIcon />}
-        />
+        {isAdmin() && (
+          <Button
+            className="bg-white-0 !p-3 !rounded-full shadow-md absolute bottom-0 right-0"
+            onClick={onEditAvatar}
+            color="smoke"
+            variant="text"
+            StartIcon={<EditIcon />}
+          />
+        )}
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex gap-2 items-center">
@@ -74,13 +79,15 @@ export default function TalentProfileGeneralInfo({
           <Typography variant="support">{talent.role}</Typography>
           <TextPlaceIcon text={`${talent.city}, ${talent.country}`} />
           <TextPriceIcon text={`${talent.salary_min} - ${talent.salary_max}`} />
-          <Button
-            StartIcon={<EditIcon />}
-            variant="text"
-            className="!p-0"
-            color="smoke"
-            onClick={onEditSalary}
-          />
+          {isAdmin() && (
+            <Button
+              StartIcon={<EditIcon />}
+              variant="text"
+              className="!p-0"
+              color="smoke"
+              onClick={onEditSalary}
+            />
+          )}
         </div>
         <div className="flex gap-2">
           <RatingStars rating={meanScore} />

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import CheckBar from "../../CheckBar";
 import { v4 as uuid } from "uuid";

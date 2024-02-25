@@ -7,24 +7,28 @@ import useToogle from "@/hooks/useToogle";
 import { TalentFull } from "@/types/Talent";
 import Link from "next/link";
 import FormFieldsDescription from "@/forms/form-fields/description";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileDescription({
   talent,
 }: {
   talent: TalentFull;
 }) {
+  const { isAdmin } = useAuth();
   const { flag, on, off } = useToogle();
 
   return (
     <section className="col-span-12 flex">
       <Typography>
         {talent.description}
-        <span
-          className="material-symbols-outlined align-middle cursor-pointer hover:bg-gray-40 rounded-full"
-          onClick={on}
-        >
-          edit
-        </span>
+        {isAdmin() && (
+          <span
+            className="material-symbols-outlined align-middle cursor-pointer hover:bg-gray-40 rounded-full"
+            onClick={on}
+          >
+            edit
+          </span>
+        )}
       </Typography>
 
       <Modal open={flag} onClose={off}>

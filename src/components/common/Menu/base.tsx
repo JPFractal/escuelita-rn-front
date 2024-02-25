@@ -1,3 +1,5 @@
+"use client";
+
 import useToogle from "@/hooks/useToogle";
 import Button from "../Button";
 import useMemory from "@/hooks/useMemory";
@@ -24,6 +26,7 @@ export interface MenuBaseProps {
   addInput?: boolean;
   showChecks?: boolean;
   memoAsList?: boolean;
+  xPos?: "right" | "left";
 }
 
 export default function MenuBase({
@@ -40,6 +43,7 @@ export default function MenuBase({
   showChecks = false,
   addInput = false,
   memoAsList = false,
+  xPos = "left",
 }: MenuBaseProps) {
   /*I know this component has too many callbacks (cb) functions, cb that we are not using in the project, 
   but when i was working on the MenuToogle(a variant of Menu) I was thinking on the extensibility of the component.
@@ -70,6 +74,13 @@ export default function MenuBase({
     exportMemory(memory);
   }, [memory]);
 
+  const position = {
+    x: {
+      right: "right-0",
+      left: "left-0",
+    },
+  };
+
   return (
     <>
       <div className="relative">
@@ -81,9 +92,9 @@ export default function MenuBase({
         </div>
 
         <div
-          className={`${!flag && "hidden"} absolute top-100 left-0 z-20 ${
-            wide ? "w-80" : "w-40"
-          }`}
+          className={`${!flag && "hidden"} absolute top-100 ${
+            position.x[xPos]
+          } z-20 ${wide ? "w-80" : "w-40"}`}
         >
           {addInput && (
             <div className="flex w-full">
@@ -125,7 +136,7 @@ export default function MenuBase({
               return (
                 <Option
                   key={v4()}
-                  onClick={() => toogleMemory(item)}
+                  onClick={item?.onClick ?? (() => toogleMemory(item))}
                   checked={checked}
                 >
                   {getItemPrint(item)}

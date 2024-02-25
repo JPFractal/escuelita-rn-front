@@ -13,6 +13,7 @@ import FormFieldsExperienceTraining from "@/forms/form-fields/experience-trainin
 import FormContextProvider from "@/context/form-context";
 import ExperienceCard from "@/mainComponents/Cards/ExperienceCard";
 import ConfirmActionModal from "@/components/common/ConfirmActionModal/indext";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileExperienceTraining({
   title = "",
@@ -21,6 +22,7 @@ export default function TalentProfileExperienceTraining({
   title?: string;
   items: Array<Experience>;
 }) {
+  const { isAdmin } = useAuth();
   const { flag, on, off } = useToogle();
   const { flag: editForm, off: isAdd, on: isEdit } = useToogle();
   const { flag: action, on: actionDeleted, off: actionEdit } = useToogle();
@@ -59,12 +61,13 @@ export default function TalentProfileExperienceTraining({
 
   return (
     <section className="col-span-12 ">
-      <ListContainer name={title} onAdd={handleAdd}>
+      <ListContainer name={title} onAdd={handleAdd} control={isAdmin()}>
         {items.map((item) => (
           <ExperienceCard
             key={item.id}
             experience={item}
             onAction={() => handleModalEdit(item)}
+            control={isAdmin()}
           />
         ))}
       </ListContainer>

@@ -1,9 +1,13 @@
+"use client";
+
 import Button from "../common/Button";
 import InputSearch from "../InputSearch";
 import Menu from "../common/Menu";
-import Option from "../common/Menu/option";
 import { LANGUAGE_LEVELS } from "@/constraints/Values/language-levels";
 import { LANGUAGE_OPTIONS } from "@/constraints/Values/language-options";
+import AddIcon from "../common/Icon/icons/add";
+import useAuth from "@/hooks/useAuth";
+import Typography from "../common/Typography";
 
 export default function FilterBar() {
   return (
@@ -47,6 +51,28 @@ export default function FilterBar() {
       </div>
       <InputSearch />
       <Button>Buscar</Button>
+    </div>
+  );
+}
+
+export function FilterBarLeftSide() {
+  const { isAdmin } = useAuth();
+  return (
+    <div className="h-[44px] flex items-center">
+      {isAdmin() ? (
+        <Button
+          variant="outlined"
+          color="sky"
+          StartIcon={<AddIcon />}
+          href="/new-talent"
+        >
+          Nuevo talento
+        </Button>
+      ) : (
+        <Typography>
+          Mostrando x resultados para: "termino de busqueda"
+        </Typography>
+      )}
     </div>
   );
 }

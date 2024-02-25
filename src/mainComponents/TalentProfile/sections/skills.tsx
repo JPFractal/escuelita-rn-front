@@ -1,3 +1,5 @@
+"use client";
+
 import { TalentFull } from "@/types/Talent";
 import Typography from "@/components/common/Typography";
 import Badge from "@/components/common/Badge";
@@ -6,12 +8,14 @@ import Modal from "@/components/common/Modal";
 import FormFieldsSkill from "@/forms/form-fields/skill";
 import useToogle from "@/hooks/useToogle";
 import ModalContent from "@/components/common/Container/ModalContent";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileSkills({
   talent,
 }: {
   talent: TalentFull;
 }) {
+  const { isAdmin } = useAuth();
   const { flag: tech, on: isTech, off: isSoft } = useToogle();
   const { flag: addFlag, on: addOn, off: addOff } = useToogle();
 
@@ -28,6 +32,7 @@ export default function TalentProfileSkills({
         axis={0}
         mainContainerClass="w-3/5"
         onAdd={() => handleAdd(true)}
+        control={isAdmin()}
       >
         {talent.tech_skills.map((skill) => (
           <Badge color="sky" key={skill.name}>

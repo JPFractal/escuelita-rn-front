@@ -7,4 +7,5 @@ export default interface ListContainerProps {
   className?: string;
   onAdd?: MouseEventHandler;
   axis?: number;
+  control?: boolean;
 }

@@ -12,6 +12,7 @@ import ConfirmActionModal from "@/components/common/ConfirmActionModal/indext";
 import ModalADE from "@/components/ModalADE";
 import { useForm } from "react-hook-form";
 import { EXPERIENCE_FIELD_LIST } from "@/forms/form-validations/experience-training";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileExperienceLabor({
   title = "",
@@ -20,6 +21,7 @@ export default function TalentProfileExperienceLabor({
   title?: string;
   items: Array<Experience>;
 }) {
+  const { isAdmin } = useAuth();
   const { flag: flagModal, on: onModal, off: offModal } = useToogle();
   const { flag: typeAction, on: isAdd, off: isEdit } = useToogle();
   const methods = useForm({ defaultValues: EXPERIENCE_FIELD_LIST });
@@ -36,12 +38,13 @@ export default function TalentProfileExperienceLabor({
 
   return (
     <section className="col-span-12 ">
-      <ListContainer name={title} onAdd={addTrigger}>
+      <ListContainer name={title} onAdd={addTrigger} control={isAdmin()}>
         {items.map((item: Experience) => (
           <ExperienceCard
             key={"experience-" + item.id}
             experience={item}
             onAction={() => editTrigger(item)}
+            control={isAdmin()}
           />
         ))}
       </ListContainer>

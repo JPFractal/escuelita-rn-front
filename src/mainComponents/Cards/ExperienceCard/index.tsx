@@ -1,19 +1,18 @@
 import Avatar from "@/components/common/Avatar";
-import Button from "@/components/common/Button";
 import EditableCard from "@/components/common/Container/EditableCard";
-import EditIcon from "@/components/common/Icon/icons/edit";
 import Typography from "@/components/common/Typography";
-import EditSocialNetworks from "@/forms/form-fields/social-networks";
 import Experience from "@/types/Experience";
-import { MouseEventHandler } from "react";
+import { SimpleActionCardProps } from "@/types/common/SimpleActionCard";
+
+interface ExperienceCardProps extends SimpleActionCardProps {
+  experience: Experience;
+}
 
 export default function ExperienceCard({
   experience,
   onAction = () => {},
-}: {
-  experience: Experience;
-  onAction?: MouseEventHandler;
-}) {
+  control = true,
+}: ExperienceCardProps) {
   const start_date = experience.start_date.getFullYear();
   const end_date = experience.end_date
     ? experience.end_date.getFullYear()
@@ -25,7 +24,7 @@ export default function ExperienceCard({
       : end_date - start_date;
 
   return (
-    <EditableCard onEdit={onAction}>
+    <EditableCard onEdit={onAction} control={control}>
       <div className="flex gap-4 items-center">
         <Avatar size="md" src={experience.organization.photo} />
         <div className="flex flex-col gap-1">

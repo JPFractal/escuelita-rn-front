@@ -50,7 +50,9 @@ export default function TextField({
           <Button
             variant="text"
             color="smoke"
-            className="absolute bottom-0 right-0 bg-white-0 h-full rounded-s-none border border-gray-30 !border-s-0 hover:bg-white-0"
+            className={`absolute top-0 right-0 bg-white-0 h-fit rounded-s-none border ${
+              error ? "border-red-10" : "border-gray-30"
+            } !border-s-0 hover:bg-white-0`}
             onClick={(e) => setType(_type === "password" ? "text" : "password")}
             title={_type === "password" ? "Mostrar" : "Ocultar"}
           >

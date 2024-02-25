@@ -1,14 +1,13 @@
+"use client";
+
 import ListContainer from "@/components/common/Container/List";
-import Modal from "@/components/common/Modal";
-import ModalContent from "@/components/common/Container/ModalContent";
 import { useState } from "react";
 import useToogle from "@/hooks/useToogle";
-import TrashIcon from "@/components/common/Icon/icons/trash";
-import { palette } from "@/themes/colors";
 import LanguageCard from "@/mainComponents/Cards/LanguageCard";
 import Language from "@/types/Language";
 import FormFieldsLanguage from "@/forms/form-fields/language";
 import ModalADE from "@/components/ModalADE";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileLanguages({
   title = "",
@@ -17,6 +16,8 @@ export default function TalentProfileLanguages({
   title?: string;
   items: Array<Language>;
 }) {
+  const { isAdmin } = useAuth();
+
   const { flag: flagModal, on: onModal, off: offModal } = useToogle();
   const { flag: typeAction, on: isAdd, off: isEdit } = useToogle();
   const [language, setLanguage] = useState<Language>(items[0]);
@@ -37,12 +38,13 @@ export default function TalentProfileLanguages({
 
   return (
     <section className="col-span-12 ">
-      <ListContainer name={title} onAdd={addTrigger}>
+      <ListContainer name={title} onAdd={addTrigger} control={isAdmin()}>
         {items.map((item: Language) => (
           <LanguageCard
             key={"experience-" + item.id}
             language={item}
             onAction={() => editTrigger(item)}
+            control={isAdmin()}
           />
         ))}
       </ListContainer>

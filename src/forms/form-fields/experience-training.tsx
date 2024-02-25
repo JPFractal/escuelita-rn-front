@@ -1,9 +1,11 @@
+"use client";
+
 import DateFieldInterval from "@/components/DateFieldInterval";
 import TextField from "@/components/common/TextField";
 import TextFieldAndCheckbox from "@/components/common/TextField/TextFieldAndCheckbox";
 import { useFormContext } from "react-hook-form";
 import { EXPERIENCE_VALIDATORS } from "../form-validations/experience-training";
-import { getMessageErrors } from "../form-validations/experience-training";
+import { getMessageErrors } from "@/utils/get-message-errors";
 
 export default function FormFieldsExperienceTraining() {
   const {

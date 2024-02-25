@@ -16,10 +16,12 @@ interface SelectProps {
   options?: any[];
   value?: string;
   defaultValue?: string;
+  name?: string;
 }
 
 export default function Select({
   label,
+  name,
   fullwidth = false,
   className = "",
   classNameSelect = "",

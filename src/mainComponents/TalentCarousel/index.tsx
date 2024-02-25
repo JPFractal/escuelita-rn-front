@@ -1,3 +1,5 @@
+"use client";
+
 import useTalents from "@/hooks/useTalents";
 import TalentSummaryCard from "../Cards/TalentSummaryCard";
 

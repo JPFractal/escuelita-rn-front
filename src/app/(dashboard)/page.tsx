@@ -1,32 +1,15 @@
-"use client";
-
-import FilterBar from "@/components/FilterBar";
+import FilterBar, { FilterBarLeftSide } from "@/components/FilterBar";
 import TalentProfile from "@/mainComponents/TalentProfile";
-import Button from "@/components/common/Button";
-
-import AddIcon from "@/assets/svg/icons/add.svg";
 import TalentCarousel from "@/mainComponents/TalentCarousel";
-import Modal from "@/components/common/Modal";
-import useToogle from "@/hooks/useToogle";
-import Paper from "@/components/common/Container/Paper/intex";
-import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="max-w-screen-2xl py-4 px-10 mx-auto grid gap-4 grid-cols-12">
         <div className="col-span-12 flex gap-4 flex-col">
           <div className="flex gap-4">
             <div className="left-side flex flex-col gap-4 min-w-max">
-              <div>
-                {/* <Typography variant="support">
-              33 resultados disponibles para “Full-stack developer”
-            </Typography> */}
-                <Button variant="outlined" color="sky" startIcon={AddIcon}>
-                  Nuevo talento
-                </Button>
-              </div>
+              <FilterBarLeftSide />
               <div
                 className="overflow-y-auto"
                 style={{ maxHeight: "calc(100vh - 195px)" }}

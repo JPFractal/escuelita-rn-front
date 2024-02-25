@@ -8,12 +8,14 @@ import Modal from "@/components/common/Modal";
 import ModalContent from "@/components/common/Container/ModalContent";
 import FormFieldsFeedback from "@/forms/form-fields/feedback";
 import useToogle from "@/hooks/useToogle";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileFeedback({
   items,
 }: {
   items: Array<Feedback>;
 }) {
+  const { isAdmin } = useAuth();
   const { flag, on, off } = useToogle();
 
   return (
@@ -27,18 +29,24 @@ export default function TalentProfileFeedback({
         <FeedbackCard key={"feedback-comment-" + item.id} feedback={item} />
       ))}
 
-      <Button
-        StartIcon={<AddIcon size="xs" />}
-        variant="text"
-        color="smoke"
-        className="font-normal !justify-normal"
-        onClick={on}
-      >
-        Dar nuevo feedback
-      </Button>
+      {isAdmin() && (
+        <Button
+          StartIcon={<AddIcon size="xs" />}
+          variant="text"
+          color="smoke"
+          className="font-normal !justify-normal"
+          onClick={on}
+        >
+          Dar nuevo feedback
+        </Button>
+      )}
 
       <Modal open={flag} onClose={off}>
-        <ModalContent onCancel={off} title="Agrega nuevo feedback" subtitle="Añade un puntaje y escribe un comentario.">
+        <ModalContent
+          onCancel={off}
+          title="Agrega nuevo feedback"
+          subtitle="Añade un puntaje y escribe un comentario."
+        >
           <FormFieldsFeedback />
         </ModalContent>
       </Modal>

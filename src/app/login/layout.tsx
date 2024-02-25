@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "../globals.css";
+import "@/app/(dashboard)/globals.css";
 import Image from "next/image";
 
 import MapSVG from "@/assets/svg/img/america-map.svg";
 import PeopleSVG from "@/assets/svg/img/people.svg";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Banco de talentos | Iniciar sesión",
   description: "",
 };
 
-export default function RootLayout({
+export default function LoginLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

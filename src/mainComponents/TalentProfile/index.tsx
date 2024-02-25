@@ -1,3 +1,5 @@
+"use client";
+
 import useTalent from "@/hooks/useTalent";
 import TalentProfileGeneralInfo from "./sections/general-info";
 import TalentProfileSkills from "./sections/skills";
