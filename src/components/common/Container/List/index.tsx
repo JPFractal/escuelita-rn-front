@@ -10,7 +10,7 @@ export default function ListContainer({
   mainContainerClass = "",
   axis = 1,
   onAdd = () => {},
-  control = false,
+  control = true,
 }: ListContainerProps) {
   return (
     <div className={"flex flex-col gap-3 " + mainContainerClass}>

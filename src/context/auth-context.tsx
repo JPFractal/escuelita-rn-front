@@ -59,7 +59,7 @@ export default function AuthProvider({
   };
 
   const isAdmin = (): boolean => {
-    return !!(user?.role === "admin");
+    return user?.role === "admin";
   };
 
   const context: AuthContextProps = {

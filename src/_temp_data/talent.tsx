@@ -114,6 +114,7 @@ const talent = {
   certificates: [
     { id: 1, name: "Frontend", src: "/mock-data/certificate.svg" },
     { id: 2, name: "Backend", src: "/mock-data/certificate.svg" },
+    { id: 3, name: "Data science", src: "/mock-data/certificate.svg" },
   ],
   languages: [
     { id: 1, name: "Inglés", level: 4, checked: true },

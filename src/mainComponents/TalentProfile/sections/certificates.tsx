@@ -9,12 +9,15 @@ import Certificate from "@/types/Certificate";
 import Image from "next/image";
 import { useState } from "react";
 import AddCertificate from "@/forms/form-fields/certificate";
+import useAuth from "@/hooks/useAuth";
 
 export default function TalentProfileCertificates({
   items = [],
 }: {
   items: Certificate[];
 }) {
+  const { isAdmin } = useAuth();
+
   const [src, setSRC] = useState<string>(items[0].src);
   const { flag, on, off } = useToogle();
 
@@ -30,17 +33,26 @@ export default function TalentProfileCertificates({
   };
 
   return (
-    <section className="col-span-12 flex gap-4">
+    <section className="col-span-12 flex overflow-auto pb-2">
+      {isAdmin() && (
+        <div className="shrink-0 w-1/3">
+          <UploadCard
+            className="flex-1 bg-gray-50 h-full mr-4"
+            onClick={onAddCertificate}
+          />
+        </div>
+      )}
+
       {items.map((item) => (
-        <FileCard
-          src={item.src}
-          name="Certificado Frontend"
-          className="flex-1 cursor-pointer"
-          key={`certificate-${item.id}`}
-          onClick={() => handleClick(item.src)}
-        />
+        <div key={`certificate-${item.id}`} className="shrink-0 w-1/3">
+          <FileCard
+            src={item.src}
+            name={`Certificado en ${item.name}`}
+            className="cursor-pointer mr-4"
+            onClick={() => handleClick(item.src)}
+          />
+        </div>
       ))}
-      <UploadCard className="flex-1 bg-gray-50" onClick={onAddCertificate} />
 
       <Modal open={flag} onClose={off}>
         <Image src={src} alt="certificate detailed" width={480} height={200} />

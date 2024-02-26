@@ -45,6 +45,7 @@ export default function TalentProfileSkills({
         axis={0}
         mainContainerClass="w-2/5"
         onAdd={() => handleAdd(false)}
+        control={isAdmin()}
       >
         {talent.soft_skills.map((skill) => (
           <Badge color="pink" key={skill}>
