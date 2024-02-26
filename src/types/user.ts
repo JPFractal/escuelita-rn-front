@@ -3,4 +3,5 @@ export default interface User {
   photo?: string;
   name: string;
   role: string;
+  username: string 
 }

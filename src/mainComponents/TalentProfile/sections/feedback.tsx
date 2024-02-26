@@ -15,7 +15,7 @@ export default function TalentProfileFeedback({
 }: {
   items: Array<Feedback>;
 }) {
-  const { isAdmin } = useAuth();
+  const { isLogged } = useAuth();
   const { flag, on, off } = useToogle();
 
   return (
@@ -29,7 +29,7 @@ export default function TalentProfileFeedback({
         <FeedbackCard key={"feedback-comment-" + item.id} feedback={item} />
       ))}
 
-      {isAdmin() && (
+      {isLogged() && (
         <Button
           StartIcon={<AddIcon size="xs" />}
           variant="text"

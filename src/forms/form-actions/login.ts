@@ -2,18 +2,13 @@ import { API_DIRECTORY } from "@/constraints/Api-Directory";
 import { FIELD_TYPES_LOGIN } from "../form-validations/login";
 import fetchTreament from "@/utils/fetch-treatment";
 import CustomResponse from "@/types/request/response";
+import { REQ_LOGIN } from "@/requests/login";
 
 export async function onSubmitLogin(
   values: FIELD_TYPES_LOGIN
 ): Promise<CustomResponse> {
   const state = await fetchTreament({
-    request: fetch(API_DIRECTORY.LOGIN().src, {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }),
+    request: REQ_LOGIN(values),
     reqErrorMessage: "Credenciales incorrectas",
   });
 
