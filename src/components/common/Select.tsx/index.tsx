@@ -17,6 +17,7 @@ interface SelectProps {
   value?: string;
   defaultValue?: string;
   name?: string;
+  inputProps?: any;
 }
 
 export default function Select({
@@ -29,6 +30,7 @@ export default function Select({
   error = false,
   options = [],
   value,
+  inputProps,
   defaultValue,
 }: SelectProps) {
   return (
@@ -38,6 +40,7 @@ export default function Select({
           error ? INPUT_STYLE_ERROR : INPUT_STYLE_NORMAL
         } ${classNameSelect}`}
         {...(value ? { value } : { defaultValue })}
+        {...(inputProps && inputProps)}
       >
         <option>{placeholder}</option>
         {options.map((option: any) => (

@@ -1,8 +1,14 @@
 import CustomFieldSetRadio from "@/components/common/Container/CustomFieldSetRadio";
 import TextField from "@/components/common/TextField";
 import { TalentFull } from "@/types/Talent";
+import { getErrorMessage } from "@/utils/get-message-errors";
+import { useFormContext } from "react-hook-form";
 
-export default function EditSalary({ talent }: { talent: TalentFull }) {
+export default function EditSalary({ talent }: { talent?: TalentFull }) {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   return (
     <div className="grid grid-cols-12 gap-4">
       <CustomFieldSetRadio
@@ -27,6 +33,8 @@ export default function EditSalary({ talent }: { talent: TalentFull }) {
         placeholder="ej. 2000"
         label="Monto inicial"
         type="number"
+        inputProps={register("initialAmount")}
+        {...getErrorMessage(errors, "initialAmount")}
       />
       <TextField
         defaultValue={talent?.salary_max}
@@ -35,6 +43,8 @@ export default function EditSalary({ talent }: { talent: TalentFull }) {
         placeholder="ej. 5000"
         label="Monto final"
         type="number"
+        inputProps={register("finalAmount")}
+        {...getErrorMessage(errors, "finalAmount")}
       />
     </div>
   );
