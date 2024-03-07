@@ -1,5 +1,5 @@
 export default interface Certificate {
-  id: string | number;
+  id: number;
   name: string;
   src: string;
 }

@@ -7,4 +7,5 @@ export const API_DIRECTORY = {
       src: `${API_BASE_URL}/users/profile/${username}`,
     }),
   },
+  TALENTS: { src: `${API_BASE_URL}/talents` }
 };

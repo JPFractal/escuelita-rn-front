@@ -18,20 +18,20 @@ export const regiterTalentDefaultValues = {
 };
 
 export interface RegisterTalent {
-  // firstName: string;
-  // paternalSurname: string;
-  // maternalSurname: string;
-  // imageUrl: Blob;
-  // description: string;
-  // talentProfileId: number;
-  // currencyTypeId: number;
+  firstName: string;
+  paternalSurname: string;
+  maternalSurname: string;
+  imageUrl: string;
+  description: string;
+  talentProfileId: number;
+  currencyTypeId: number;
   initialAmount: number;
   finalAmount: number;
-  // cellphone: string;
+  cellphone: string;
   linkedinUrl: string;
   githubUrl: string;
-  // countryId: number;
-  // cityId: number;
+  countryId: number;
+  cityId: number;
 }
 
 export const RegisterTalentSchema = z.object({

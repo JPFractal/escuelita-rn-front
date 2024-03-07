@@ -1,7 +1,9 @@
-const talent = {
+import { TalentFull } from "@/types/Talent";
+
+const talent: TalentFull = {
   name: "Juan Lopez Martinez",
   role: "Full-stack developer",
-  description: `Hello! This is Juan Lopez speaking, I’m a Full-Stack Developer specializing in Front-End Technologies and also a student at Holberton School.`,
+  description: `Hello! This is Juan Lopez speaking, I'm a Full-Stack Developer specializing in Front-End Technologies and also a student at Holberton School.`,
   rating: 3,
   city: "Lima",
   country: "Perú",

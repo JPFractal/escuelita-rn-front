@@ -1,6 +1,6 @@
 "use client";
 
-import useTalent from "@/hooks/useTalent";
+import useTalents from "@/hooks/useTalents";
 import TalentProfileGeneralInfo from "./sections/general-info";
 import TalentProfileSkills from "./sections/skills";
 import TalentProfileDescription from "./sections/description";
@@ -11,7 +11,8 @@ import TalentProfileExperienceTraining from "./sections/experience-training";
 import TalentProfileExperienceLabor from "./sections/experience-labor";
 
 export default function TalentProfile({ idTalent }: { idTalent: number }) {
-  const { talent } = useTalent(idTalent);
+  const { getTalent } = useTalents();
+  const talent = getTalent(idTalent);
 
   return (
     <article

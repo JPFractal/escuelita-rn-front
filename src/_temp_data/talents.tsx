@@ -1,6 +1,6 @@
-import User from "@/types/Talent";
+import Talent from "@/types/Talent";
 
-const talents_test_data: Array<User> = [
+const talents_test_data: Talent[] = [
   {
     name: "Juan Lopez Martinez",
     role: "Full-stack developer",
@@ -13,7 +13,6 @@ const talents_test_data: Array<User> = [
   {
     name: "Claudia Castillo",
     role: "Full-stack developer",
-    rating: 4,
     city: "Lima",
     country: "Perú",
     salary_min: 2500,

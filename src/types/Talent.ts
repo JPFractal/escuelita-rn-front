@@ -1,3 +1,4 @@
+import Certificate from "./Certificate";
 import Experience from "./Experience";
 import Feedback from "./Feedback";
 import Language from "./Language";
@@ -22,6 +23,7 @@ export interface TalentFull extends Talent {
   soft_skills: Array<string>;
   languages: Array<Language>;
   feedbacks: Array<Feedback>;
+  certificates: Array<Certificate>
   experiences: Array<Experience>;
   github_url?: string;
   linkedin_url?: string;
