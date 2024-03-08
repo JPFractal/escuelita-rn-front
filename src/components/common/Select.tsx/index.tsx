@@ -1,10 +1,10 @@
-import { v4 } from "uuid";
 import Typography from "../Typography";
 import FormControl from "../FormControl";
 import {
   INPUT_STYLE_ERROR,
   INPUT_STYLE_NORMAL,
 } from "@/constraints/Styles/form-control";
+import { FooDto } from "@/types/RegisterMetadata";
 
 interface SelectProps {
   label?: string;
@@ -42,10 +42,10 @@ export default function Select({
         {...(value ? { value } : { defaultValue })}
         {...(inputProps && inputProps)}
       >
-        <option>{placeholder}</option>
-        {options.map((option: any) => (
-          <option key={v4()} value={option.value}>
-            {option.label}
+        <option selected hidden value="">{placeholder}</option>
+        {options.map((option: FooDto) => (
+          <option key={option.id} value={option.id}>
+            {option.name}
           </option>
         ))}
       </select>

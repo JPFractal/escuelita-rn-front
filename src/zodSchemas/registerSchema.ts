@@ -1,9 +1,9 @@
 import z from "zod";
 
 export const regiterTalentDefaultValues = {
-  // firstName: "",
-  // paternalSurname: "",
-  // maternalSurname: "",
+  firstName: "",
+  paternalSurname: "",
+  maternalSurname: "",
   // imageUrl: "",
   // description: "",
   // talentProfileId: 0,
@@ -35,18 +35,18 @@ export interface RegisterTalent {
 }
 
 export const RegisterTalentSchema = z.object({
-  // firstName: z
-  //   .string()
-  //   .nonempty({ message: "First name is required" })
-  //   .max(100),
-  // paternalSurname: z
-  //   .string()
-  //   .nonempty({ message: "Paternal surname is required" })
-  //   .max(100),
-  // maternalSurname: z
-  //   .string()
-  //   .nonempty({ message: "Maternal surname is required" })
-  //   .max(100),
+  firstName: z
+    .string()
+    .min(2, { message: "First name is required" })
+    .max(100),
+  paternalSurname: z
+    .string()
+    .min(2, { message: "Paternal surname is required" })
+    .max(100),
+  maternalSurname: z
+    .string()
+    .min(2, { message: "Maternal surname is required" })
+    .max(100),
   //   imageUrl: z
   //     .string()
   //     .nonempty({ message: "Image URL is required" })

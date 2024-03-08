@@ -19,6 +19,7 @@ import {
 } from "@/zodSchemas/registerSchema";
 import { useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import FormFieldsNames from "@/forms/form-fields/names";
 export default function TalentRegister({
   className,
   style,
@@ -62,6 +63,9 @@ export default function TalentRegister({
           </div>
         </div>
         <div className={"flex flex-col gap-6 " + className} style={style}>
+          <SectionContainer title="Datos del Talento">
+            <FormFieldsNames />
+          </SectionContainer>
           <SectionContainer title="Curriculum Vitae">
             <UploadCard
               className="p-8 border border-gray-35"

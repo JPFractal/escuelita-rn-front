@@ -11,28 +11,26 @@ import TalentProfileExperienceTraining from "./sections/experience-training";
 import TalentProfileExperienceLabor from "./sections/experience-labor";
 
 export default function TalentProfile({ idTalent }: { idTalent: number }) {
-  const { getTalent } = useTalents();
-  const talent = getTalent(idTalent);
-
+  const { selectedTalent } = useTalents();
   return (
     <article
       className="grid grid-cols-12 w-full gap-6 overflow-y-auto pb-4 pr-4"
       style={{ maxHeight: "calc(100vh - 220px)" }}
     >
-      <TalentProfileGeneralInfo talent={talent} />
-      <TalentProfileCertificates items={talent.certificates} />
-      <TalentProfileSkills talent={talent} />
-      <TalentProfileDescription talent={talent} />
+      <TalentProfileGeneralInfo talent={selectedTalent} />
+      <TalentProfileCertificates items={selectedTalent.certificates} />
+      <TalentProfileSkills talent={selectedTalent} />
+      <TalentProfileDescription talent={selectedTalent} />
       <TalentProfileExperienceLabor
         title="Experiencia"
-        items={talent.experiences.filter((exp) => exp.type === "work")}
+        items={selectedTalent.experiences.filter((exp) => exp.type === "work")}
       />
       <TalentProfileExperienceTraining
         title="Educación"
-        items={talent.experiences.filter((exp) => exp.type === "school")}
+        items={selectedTalent.experiences.filter((exp) => exp.type === "school")}
       />
-      <TalentProfileLanguages title="Idiomas" items={talent.languages} />
-      <TalentProfileFeedback items={talent.feedbacks} />
+      <TalentProfileLanguages title="Idiomas" items={selectedTalent.languages} />
+      <TalentProfileFeedback items={selectedTalent.feedbacks} />
     </article>
   );
 }
