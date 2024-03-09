@@ -37,19 +37,19 @@ export interface RegisterTalent {
 export const RegisterTalentSchema = z.object({
   firstName: z
     .string()
-    .min(2, { message: "First name is required" })
+    .min(2, { message: "El nombre es requerido" })
     .max(100),
   paternalSurname: z
     .string()
-    .min(2, { message: "Paternal surname is required" })
+    .min(2, { message: "El apellido paterno es requerido" })
     .max(100),
   maternalSurname: z
     .string()
-    .min(2, { message: "Maternal surname is required" })
+    .min(2, { message: "El apellido materno es requerido" })
     .max(100),
   //   imageUrl: z
   //     .string()
-  //     .nonempty({ message: "Image URL is required" })
+  //     .nonempty({ message: "Image file is required" })
   //     .refine(
   //       (value) =>
   //         value.match(
@@ -100,8 +100,15 @@ export const RegisterTalentSchema = z.object({
       message: "El campo no puede tener más de 100 caracteres",
     })
     .url({ message: "Por favor, ingresa una URL válida" }),
-  // countryId: z.number().int().nonnegative(),
-  // cityId: z.number().int().nonnegative(),
+  countryId: z.number({
+    invalid_type_error: "El país es obligatorio"
+  }).int().nonnegative(),
+  cityId: z.number({
+      invalid_type_error: "La ciudad es obligatoria"
+    }).int().nonnegative()
+    .refine((value) => value >= 0, {
+      message: "La ciudad es obligatoria",
+    }),
 });
 
 export type Talent = z.infer<typeof RegisterTalentSchema>;

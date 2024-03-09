@@ -20,6 +20,7 @@ import {
 import { useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormFieldsNames from "@/forms/form-fields/names";
+import FormFieldsCountry from "@/forms/form-fields/country";
 export default function TalentRegister({
   className,
   style,
@@ -116,6 +117,9 @@ export default function TalentRegister({
           </SectionContainer>
           <SectionContainer title="Idiomas">
             <FormFieldsLanguage />
+          </SectionContainer>
+          <SectionContainer title="Residencia">
+            <FormFieldsCountry />
           </SectionContainer>
         </div>
       </Paper>

@@ -14,10 +14,13 @@ interface SelectProps {
   placeholder?: string;
   error?: boolean;
   options?: any[];
-  value?: string;
+  value?: any;
   defaultValue?: string;
   name?: string;
   inputProps?: any;
+  onInput?: Function;
+  disabled?: boolean;
+  helperText?: string;
 }
 
 export default function Select({
@@ -32,6 +35,9 @@ export default function Select({
   value,
   inputProps,
   defaultValue,
+  onInput,
+  disabled,
+  helperText
 }: SelectProps) {
   return (
     <FormControl {...{ label, fullwidth, className }}>
@@ -39,16 +45,21 @@ export default function Select({
         className={`${
           error ? INPUT_STYLE_ERROR : INPUT_STYLE_NORMAL
         } ${classNameSelect}`}
+        onInput={onInput}
         {...(value ? { value } : { defaultValue })}
-        {...(inputProps && inputProps)}
+        {...inputProps}
+        disabled={disabled}
       >
-        <option selected hidden value="">{placeholder}</option>
+        <option hidden value="">{placeholder}</option>
         {options.map((option: FooDto) => (
           <option key={option.id} value={option.id}>
             {option.name}
           </option>
         ))}
       </select>
+      <Typography className={`mt-2 ${error && "text-red-10"}`}>
+          {helperText}
+      </Typography>
     </FormControl>
   );
 }
