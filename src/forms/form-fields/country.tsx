@@ -8,25 +8,28 @@ import { useFormContext } from "react-hook-form";
 export default function FormFieldsCountry() {
   const {
     register,
+    setValue,
     formState: { errors },
   } = useFormContext();
 
 
   const { metadata } = useTalents();
 
-  const [selectedCountry, setSelectedCountry] = useState<number>();
-  const [selectedCity, setSelectedCity] = useState<any>();
+  const [selectedCountry, setSelectedCountry] = useState<string>("");
+  const [selectedCity, setSelectedCity] = useState<string>("");
   const [availableCities, setAvailableCities] = useState<CityDto[]>([]);  
   const handleChangeCountry = (e: any) => {
     let select = e.target as HTMLSelectElement;
-    let countryId = Number(select.value);
+    let countryId = select.value;
     setSelectedCountry(countryId);
-    setAvailableCities(metadata.cities.filter(city => city.countryId == countryId));
+    setAvailableCities(metadata.cities.filter(city => city.countryId == Number(countryId)));
     setSelectedCity("");
+    setValue("cityId", "")
   }
+  
   const handleChangeCity = (e: any) => {
     let select = e.target as HTMLSelectElement;
-    let cityId = Number(select.value);
+    let cityId = select.value;
     setSelectedCity(cityId);
   }
   return (
@@ -47,7 +50,6 @@ export default function FormFieldsCountry() {
         className="col-span-12"
         name="ciudad"
         label="Ciudad"
-        disabled={availableCities.length === 0}
         placeholder="Ciudad de residencia"
         fullwidth
         onInput={handleChangeCity}

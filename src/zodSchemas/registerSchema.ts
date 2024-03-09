@@ -83,7 +83,7 @@ export const RegisterTalentSchema = z.object({
     }),
   // cellphone: z
   //   .string()
-  //   .min(1, { message: "Cellphone is required" })
+  //   .min(8, { message: "El número celular debe tener por lo menos 8 números" })
   //   .max(100)
   //   .optional(),
   linkedinUrl: z
@@ -100,14 +100,17 @@ export const RegisterTalentSchema = z.object({
       message: "El campo no puede tener más de 100 caracteres",
     })
     .url({ message: "Por favor, ingresa una URL válida" }),
-  countryId: z.number({
-    invalid_type_error: "El país es obligatorio"
-  }).int().nonnegative(),
-  cityId: z.number({
-      invalid_type_error: "La ciudad es obligatoria"
-    }).int().nonnegative()
-    .refine((value) => value >= 0, {
-      message: "La ciudad es obligatoria",
+  countryId: z
+    .string()
+    .min(1, {
+      message: "El país es obligatorio"
+    }),
+  cityId: z
+    .string({
+      invalid_type_error: "Es necesario seleccionar un país para seleccionar la ciudad"
+    })
+    .min(1, {
+      message: "La ciudad es requerida"
     }),
 });
 
