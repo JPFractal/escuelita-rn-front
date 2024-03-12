@@ -1,4 +1,12 @@
 import z from "zod";
+const MAX_FILE_SIZE = 5000000;
+const ACCEPTED_IMAGE_MIME_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+];
+const ACCEPTED_IMAGE_TYPES = ["jpeg", "jpg", "png"];
+
 
 export const regiterTalentDefaultValues = {
   firstName: "",
@@ -47,16 +55,22 @@ export const RegisterTalentSchema = z.object({
     .string()
     .min(2, { message: "El apellido materno es requerido" })
     .max(100),
-  //   imageUrl: z
-  //     .string()
-  //     .nonempty({ message: "Image file is required" })
-  //     .refine(
-  //       (value) =>
-  //         value.match(
-  //           /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/
-  //         ),
-  //       "Image URL must be base64"
-  //     ),
+  imageUrl: z
+    .any()
+    .refine((files) => {
+      return files?.[0]?.size <= MAX_FILE_SIZE;
+    }, `Max image size is 5MB.`)
+    .refine((files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
+    'Solo los formatos ".jpg", ".jpeg" y ".png" son permitidos'),
+    /*.string()
+    .min(1, { message: "Image file is required" })
+    .refine(
+      (value) =>
+        value.match(
+          /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/
+        ),
+      "Image URL must be base64"
+    ),*/
   // description: z
   //   .string()
   //   .nonempty({ message: "Description is required" })

@@ -11,6 +11,10 @@ interface UploadCardProps {
   name?: string;
   subtitle?: string;
   accept?: string;
+  onChange?: Function;
+  inputProps?: any;
+  helperText?: string;
+  error?: boolean;
 }
 
 export default function UploadCard({
@@ -20,15 +24,19 @@ export default function UploadCard({
   subtitle = "",
   accept = "",
   name = "",
+  onChange,
+  inputProps,
+  helperText,
+  error = false
 }: UploadCardProps) {
   const ref = useRef<HTMLInputElement>(null);
   const handleClick = () => ref.current?.click();
   const [file, setFile] = useState<File>();
   const handleChange = (e: any) => setFile(e.target.files?.[0]);
-
   return (
     <div
-      className={`${className} max-h-[140px] overflow-hidden p-2 rounded-lg  flex items-center justify-center flex-col gap-2 hover:cursor-pointer hover:bg-sky-40`}
+      className={`${className} max-h-[140px] overflow-hidden p-2 rounded-lg  flex items-center justify-center flex-col gap-2 hover:cursor-pointer hover:bg-sky-40
+      ${error && "border-red-10"}`}
       onClick={onClick ?? handleClick}
     >
       <div className="w-10 p-2 bg-sky-40 rounded-full">
@@ -44,8 +52,12 @@ export default function UploadCard({
         name={name}
         accept={accept}
         ref={ref}
-        onChange={handleChange}
+        {...inputProps}
+        onChange={(e: any) => {handleChange(e); onChange && onChange(e);}}
       />
+      <Typography className={`mt-2 ${error && "text-red-10"}`}>
+        {helperText}
+      </Typography>
     </div>
   );
 }

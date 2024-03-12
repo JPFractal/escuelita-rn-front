@@ -21,6 +21,7 @@ import { useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormFieldsNames from "@/forms/form-fields/names";
 import FormFieldsCountry from "@/forms/form-fields/country";
+import FormFieldsImage from "@/forms/form-fields/image";
 export default function TalentRegister({
   className,
   style,
@@ -75,11 +76,7 @@ export default function TalentRegister({
             />
           </SectionContainer>
           <SectionContainer title="Foto de perfil">
-            <UploadCard
-              className="p-8 border border-gray-35"
-              title="Foto de perfil"
-              subtitle="PNG o JPG (max. 800x400px)"
-            />
+            <FormFieldsImage />
           </SectionContainer>
           <SectionContainer title="Medios sociales">
             <FormFieldsSocialNetworks />
