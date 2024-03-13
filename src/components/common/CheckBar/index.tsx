@@ -9,8 +9,11 @@ interface CheckBarProps {
   label?: string;
   name?: string;
   type?: "checkbox" | "radio";
-  value?: string;
+  value?: string | number;
   onClick?: MouseEventHandler;
+  inputProps?: any;
+  helperText?: string;
+  error?: boolean;
 }
 
 export default function CheckBar({
@@ -21,6 +24,8 @@ export default function CheckBar({
   checked = false,
   value = "",
   onClick = () => {},
+  inputProps,
+  error
 }: CheckBarProps) {
   return (
     <label
@@ -28,12 +33,14 @@ export default function CheckBar({
         fullwidth && "w-full"
       } p-4 border flex justify-between items-center ${
         checked ? "border-sky-10 bg-sky-40" : "border-gray-35"
-      } cursor-pointer rounded-lg`}
+      } cursor-pointer rounded-lg ${
+        error && "border-red-10"
+      }`}
       onClick={onClick}
     >
       <Typography
         variant="text"
-        className={`!font-medium ${checked && "text-sky-10"}`}
+        className={`!font-medium ${checked && "text-sky-10"} ${error && "text-red-10"}`}
       >
         {label}
       </Typography>
@@ -56,6 +63,7 @@ export default function CheckBar({
         }}
         className="hidden"
         value={value}
+        {...inputProps}
       />
     </label>
   );

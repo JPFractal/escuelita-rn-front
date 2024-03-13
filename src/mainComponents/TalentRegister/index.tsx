@@ -22,6 +22,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import FormFieldsNames from "@/forms/form-fields/names";
 import FormFieldsCountry from "@/forms/form-fields/country";
 import FormFieldsImage from "@/forms/form-fields/image";
+import FormFieldsDescription from "@/forms/form-fields/description";
+import FormFieldsProfile from "@/forms/form-fields/profile";
 export default function TalentRegister({
   className,
   style,
@@ -77,6 +79,12 @@ export default function TalentRegister({
           </SectionContainer>
           <SectionContainer title="Foto de perfil">
             <FormFieldsImage />
+          </SectionContainer>
+          <SectionContainer title="Perfil del talento">
+            <FormFieldsProfile />
+          </SectionContainer>
+          <SectionContainer title="Descripción">
+            <FormFieldsDescription />
           </SectionContainer>
           <SectionContainer title="Medios sociales">
             <FormFieldsSocialNetworks />

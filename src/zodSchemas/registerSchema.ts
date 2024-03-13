@@ -59,24 +59,24 @@ export const RegisterTalentSchema = z.object({
     .any()
     .refine((files) => {
       return files?.[0]?.size <= MAX_FILE_SIZE;
-    }, `Max image size is 5MB.`)
+    }, `El tamaño maximo de las imagenes es de ${MAX_FILE_SIZE/1000000}MB.`)
     .refine((files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
     'Solo los formatos ".jpg", ".jpeg" y ".png" son permitidos'),
-    /*.string()
-    .min(1, { message: "Image file is required" })
-    .refine(
-      (value) =>
-        value.match(
-          /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/
-        ),
-      "Image URL must be base64"
-    ),*/
-  // description: z
-  //   .string()
-  //   .nonempty({ message: "Description is required" })
-  //   .max(100),
-  // talentProfileId: z.number().int().nonnegative(),
-  // currencyTypeId: z.number().int().nonnegative(),
+  description: z
+    .string()
+    .min(1, { message: "La descripción es requerida" })
+    .max(100),
+  talentProfileId: z
+    .string()
+    .min(1, {
+      message: "Este campo es obligatorio",
+    }),
+  currencyTypeId: z
+    .number({
+      required_error: "Este campo es obligatorio"
+    })
+    .int()
+    .nonnegative(),
   initialAmount: z
     .string()
     .refine((value) => !isNaN(parseInt(value, 10)), {

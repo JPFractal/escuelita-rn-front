@@ -31,6 +31,8 @@ export default function TextArea({
   onChange = (e: any) => (e.target.value = e.target.value),
   rows = 3,
   cols,
+  helperText,
+  inputProps
 }: TextAreaProps) {
   return (
     <FormControl {...{ label, fullwidth, className }}>
@@ -46,8 +48,12 @@ export default function TextArea({
           onChange={onChange}
           rows={rows}
           cols={cols}
+          {...inputProps}
         />
       </div>
+      <Typography className={`mt-0 ${error && "text-red-10"}`}>
+        {helperText}
+      </Typography>
     </FormControl>
   );
 }
