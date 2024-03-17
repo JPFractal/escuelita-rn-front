@@ -12,6 +12,7 @@ export default function FormFieldsNames() {
         <div className="flex flex-col gap-4">
           <TextField
             fullwidth
+            name="firstName"
             label="Nombres"
             placeholder="Nombres del talento"
             inputProps={register("firstName")}
@@ -19,6 +20,7 @@ export default function FormFieldsNames() {
           />
           <TextField
             fullwidth
+            name="lastName"
             label="Apellido Paterno"
             placeholder="Primer apellido"
             inputProps={register("paternalSurname")}

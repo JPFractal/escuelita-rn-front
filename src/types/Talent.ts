@@ -13,6 +13,7 @@ export default interface Talent {
   country?: string;
   salary_min?: number;
   salary_max?: number;
+  cellphone: string;
   selected?: boolean;
   national_currency?: number;
 }

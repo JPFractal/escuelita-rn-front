@@ -5,17 +5,19 @@ import * as TALENT_DEF from "@/_temp_data/talent";
 import talents_test_data from "@/_temp_data/talents";
 import Talent, { TalentFull } from "@/types/Talent";
 import fetchTreament from "@/utils/fetch-treatment";
-import { REQ_TALENTS } from "@/requests/talents";
+import { POST_TALENT, REQ_TALENTS } from "@/requests/talents";
 import { RegisterTalent } from "@/zodSchemas/registerSchema";
 import adapterTalent from "@/adapters/talent";
 import { REQ_REGISTER_METADATA } from "@/requests/metadata";
 import RegisterMetadata from "@/types/RegisterMetadata";
+import { onSubmitTalent } from "@/forms/form-actions/talent";
 
 interface TalentContextProps {
     selectedTalent: TalentFull;
     setSelectedTalent: Dispatch<SetStateAction<TalentFull>>;
     talents: TalentFull[];
     metadata: RegisterMetadata;
+    postTalent: Function;
 }
 
 export const TalentContext = createContext<TalentContextProps | undefined>(
@@ -59,6 +61,14 @@ export default function TalentProvider({ children }: { children: any}) {
         setMetadata(registerMetadata);
     }
 
+    const postTalent = async (talent: RegisterTalent) => {
+        const raw = await fetchTreament({
+            request: POST_TALENT(talent),
+            reqErrorMessage: "Error al crear el usuario",
+        })
+        if (!raw.ok) throw new Error(raw.message);
+    }
+
     useEffect(() => {
         fetchTalents();
         fetchMetadata();
@@ -68,7 +78,8 @@ export default function TalentProvider({ children }: { children: any}) {
         selectedTalent,
         setSelectedTalent,
         talents,
-        metadata
+        metadata,
+        postTalent
     };
 
     return <TalentContext.Provider value={context}>{children}</TalentContext.Provider>

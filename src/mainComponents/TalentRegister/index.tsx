@@ -24,6 +24,8 @@ import FormFieldsCountry from "@/forms/form-fields/country";
 import FormFieldsImage from "@/forms/form-fields/image";
 import FormFieldsDescription from "@/forms/form-fields/description";
 import FormFieldsProfile from "@/forms/form-fields/profile";
+import FormFieldsCellphone from "@/forms/form-fields/cellphone";
+import useTalents from "@/hooks/useTalents";
 export default function TalentRegister({
   className,
   style,
@@ -36,9 +38,10 @@ export default function TalentRegister({
     defaultValues: regiterTalentDefaultValues,
   });
 
+  const { postTalent } = useTalents();
+
   async function handleSubmit(data: RegisterTalent) {
-    console.log("onSubmit");
-    console.log(data);
+    await postTalent(data)
   }
   return (
     <FormContextProvider
@@ -91,6 +94,9 @@ export default function TalentRegister({
           </SectionContainer>
           <SectionContainer title="Banda salarial">
             <FormFieldsSalary />
+          </SectionContainer>
+          <SectionContainer title="Número de celular">
+            <FormFieldsCellphone />
           </SectionContainer>
           <SectionContainer title="Habilidades técnicas">
             <FormFieldsSkill tech />

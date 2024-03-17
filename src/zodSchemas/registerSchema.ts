@@ -29,7 +29,7 @@ export interface RegisterTalent {
   firstName: string;
   paternalSurname: string;
   maternalSurname: string;
-  imageUrl: string;
+  imageUrl: any;
   description: string;
   talentProfileId: number;
   currencyTypeId: number;
@@ -70,7 +70,8 @@ export const RegisterTalentSchema = z.object({
     .string()
     .min(1, {
       message: "Este campo es obligatorio",
-    }),
+    })
+    .transform((value) => parseInt(value, 10)),
   currencyTypeId: z
     .number({
       required_error: "Este campo es obligatorio"
@@ -95,11 +96,10 @@ export const RegisterTalentSchema = z.object({
     .refine((value) => value >= 0, {
       message: "El valor no puede ser negativo",
     }),
-  // cellphone: z
-  //   .string()
-  //   .min(8, { message: "El número celular debe tener por lo menos 8 números" })
-  //   .max(100)
-  //   .optional(),
+  cellphone: z
+    .string()
+    .min(9, { message: "El número celular debe tener por lo menos 9 números" })
+    .max(12),
   linkedinUrl: z
     .string()
     .min(1, { message: "Este campo es obligatorio" })
@@ -118,14 +118,16 @@ export const RegisterTalentSchema = z.object({
     .string()
     .min(1, {
       message: "El país es obligatorio"
-    }),
+    })
+    .transform((value) => parseInt(value, 10)),
   cityId: z
     .string({
       invalid_type_error: "Es necesario seleccionar un país para seleccionar la ciudad"
     })
     .min(1, {
       message: "La ciudad es requerida"
-    }),
+    })
+    .transform((value) => parseInt(value, 10)),
 });
 
 export type Talent = z.infer<typeof RegisterTalentSchema>;

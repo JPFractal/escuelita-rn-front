@@ -9,10 +9,11 @@ export default function adapterTalent(talent: RegisterTalent): Talent { // Recei
     rating: undefined,
     city: undefined,
     country: undefined,
+    national_currency: undefined,
     salary_min: talent.initialAmount,
     salary_max: talent.finalAmount,
+    cellphone: talent.cellphone,
     selected: false,
-    national_currency: undefined
   };
 }
 /*
