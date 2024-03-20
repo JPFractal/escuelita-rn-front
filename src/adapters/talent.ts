@@ -1,19 +1,31 @@
-import Talent from "@/types/Talent";
+import { TalentFull } from "@/types/Talent";
 import { RegisterTalent } from "@/zodSchemas/registerSchema";
 
-export default function adapterTalent(talent: RegisterTalent): Talent { // Receives the model from backend and parses it to the frontend type
+export default function adapterTalent(talent: RegisterTalent): TalentFull { // Receives the model from backend and parses it to the frontend type
   return {
-    photo: undefined,
+    id: talent.id,
+    photo: talent.imageUrl ? "data:image/png;base64," + talent.imageUrl : undefined,
     name: talent.firstName + " " + talent.paternalSurname + " " + talent.maternalSurname,
-    role: undefined,
+    description: talent.description,
+    roleId: talent.talentProfileId,
     rating: undefined,
-    city: undefined,
-    country: undefined,
+    cityId: talent.cityId,
+    countryId: talent.countryId,
     national_currency: undefined,
     salary_min: talent.initialAmount,
     salary_max: talent.finalAmount,
     cellphone: talent.cellphone,
+    github_url: talent.githubUrl,
+    linkedin_url: talent.linkedinUrl,
     selected: false,
+
+    certificates: [],
+    experiences: [],
+    feedbacks: [],
+    languages: [],
+    soft_skills: [],
+    tech_skills: [],
+
   };
 }
 /*

@@ -23,6 +23,7 @@ import GitHubIcon from "@/components/common/Icon/icons/github";
 import LinkedInIcon from "@/components/common/Icon/icons/linkedin";
 import MenuToogle from "@/components/common/Menu/toogle-list";
 import useAuth from "@/hooks/useAuth";
+import useTalents from "@/hooks/useTalents";
 
 export default function TalentProfileGeneralInfo({
   talent,
@@ -30,6 +31,7 @@ export default function TalentProfileGeneralInfo({
   talent: TalentFull;
 }) {
   const { isAdmin } = useAuth();
+  const { metadata } = useTalents()
 
   const meanScore =
     talent.feedbacks.reduce((acum, feeback) => (acum += feeback.score), 0) /
@@ -56,7 +58,9 @@ export default function TalentProfileGeneralInfo({
   return (
     <section className="col-span-12 flex gap-7 items-center relative">
       <div className="relative">
-        <Avatar size="xl" />
+        <Avatar size="xl" 
+          src={talent.photo}
+        />
         {isAdmin() && (
           <Button
             className="bg-white-0 !p-3 !rounded-full shadow-md absolute bottom-0 right-0"
@@ -76,8 +80,17 @@ export default function TalentProfileGeneralInfo({
           />
         </div>
         <div className="flex gap-2">
-          <Typography variant="support">{talent.role}</Typography>
-          <TextPlaceIcon text={`${talent.city}, ${talent.country}`} />
+          <Typography variant="support">{
+          metadata?.technicalProfiles.find(role => role.id == talent.roleId)
+          ?.name
+          }</Typography>
+          <TextPlaceIcon text={`${
+              metadata?.cities.find(city => city.id == talent.cityId)
+              ?.name
+            }, ${
+              metadata?.countries.find(country => country.id == talent.countryId)
+              ?.name
+          }`} />
           <TextPriceIcon text={`${talent.salary_min} - ${talent.salary_max}`} />
           {isAdmin() && (
             <Button

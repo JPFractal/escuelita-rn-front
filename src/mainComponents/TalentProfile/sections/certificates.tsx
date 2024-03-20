@@ -18,7 +18,7 @@ export default function TalentProfileCertificates({
 }) {
   const { isAdmin } = useAuth();
 
-  const [src, setSRC] = useState<string>(items[0].src);
+  const [src, setSRC] = useState<string>(items[0]?.src);
   const { flag, on, off } = useToogle();
 
   const {

@@ -2,11 +2,11 @@ import { TalentFull } from "@/types/Talent";
 
 const talent: TalentFull = {
   name: "Juan Lopez Martinez",
-  role: "Full-stack developer",
+  roleId: 2,
   description: `Hello! This is Juan Lopez speaking, I'm a Full-Stack Developer specializing in Front-End Technologies and also a student at Holberton School.`,
   rating: 3,
-  city: "Lima",
-  country: "Perú",
+  cityId: 1,
+  countryId: 1,
   salary_min: 2500,
   salary_max: 3000,
   national_currency: 1,
@@ -51,6 +51,7 @@ const talent: TalentFull = {
         id: 1,
         name: "Cesar Ortiz",
         role: "Tech Lead",
+        username: ""
       },
       score: 3,
     },
@@ -61,6 +62,7 @@ const talent: TalentFull = {
         id: 1,
         name: "Manuel Ramirez",
         role: "Tech Lead",
+        username: ""
       },
       score: 3,
     },

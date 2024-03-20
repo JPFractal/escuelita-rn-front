@@ -26,6 +26,7 @@ export const regiterTalentDefaultValues = {
 };
 
 export interface RegisterTalent {
+  id: number;
   firstName: string;
   paternalSurname: string;
   maternalSurname: string;
@@ -61,7 +62,9 @@ export const RegisterTalentSchema = z.object({
       return files?.[0]?.size <= MAX_FILE_SIZE;
     }, `El tamaño maximo de las imagenes es de ${MAX_FILE_SIZE/1000000}MB.`)
     .refine((files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
-    'Solo los formatos ".jpg", ".jpeg" y ".png" son permitidos'),
+    'Solo los formatos ".jpg", ".jpeg" y ".png" son permitidos')
+    .transform(files => files?.[0]) // Send only the first file
+    .optional(),
   description: z
     .string()
     .min(1, { message: "La descripción es requerida" })
@@ -99,7 +102,7 @@ export const RegisterTalentSchema = z.object({
   cellphone: z
     .string()
     .min(9, { message: "El número celular debe tener por lo menos 9 números" })
-    .max(12),
+    .max(12, { message: "El número celular no puede tener más de 12 números" }),
   linkedinUrl: z
     .string()
     .min(1, { message: "Este campo es obligatorio" })
@@ -116,16 +119,10 @@ export const RegisterTalentSchema = z.object({
     .url({ message: "Por favor, ingresa una URL válida" }),
   countryId: z
     .string()
-    .min(1, {
-      message: "El país es obligatorio"
-    })
     .transform((value) => parseInt(value, 10)),
   cityId: z
     .string({
       invalid_type_error: "Es necesario seleccionar un país para seleccionar la ciudad"
-    })
-    .min(1, {
-      message: "La ciudad es requerida"
     })
     .transform((value) => parseInt(value, 10)),
 });

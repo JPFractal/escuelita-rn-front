@@ -1,8 +1,7 @@
 "use client";
 
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from "react";
-import * as TALENT_DEF from "@/_temp_data/talent";
-import talents_test_data from "@/_temp_data/talents";
+import talent_test_data from "@/_temp_data/talent";
 import Talent, { TalentFull } from "@/types/Talent";
 import fetchTreament from "@/utils/fetch-treatment";
 import { POST_TALENT, REQ_TALENTS } from "@/requests/talents";
@@ -25,8 +24,8 @@ export const TalentContext = createContext<TalentContextProps | undefined>(
 );
 
 export default function TalentProvider({ children }: { children: any}) {
-    const [selectedTalent, setSelectedTalent] = useState<TalentFull>(TALENT_DEF.default);
-    const [talents, setTalents] = useState<Talent[]>([talents_test_data[0]]);
+    const [selectedTalent, setSelectedTalent] = useState<TalentFull>(talent_test_data);
+    const [talents, setTalents] = useState<Talent[]>([]);
     const [metadata, setMetadata] = useState<RegisterMetadata | null>();
 
     const parseTalents = (talents: RegisterTalent[]) => {
@@ -47,7 +46,7 @@ export default function TalentProvider({ children }: { children: any}) {
         
         let talents: RegisterTalent[] = await raw.res?.json();
         let parsedTalents: Talent[] = parseTalents(talents);
-        setTalents([talents_test_data[0], ...parsedTalents]);
+        setTalents([talent_test_data, ...parsedTalents]);
     }
 
     const fetchMetadata = async () => {

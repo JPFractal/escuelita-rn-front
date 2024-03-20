@@ -2,7 +2,7 @@ import Typography from ".";
 
 interface TextNdSupportProps {
   text: string;
-  support: string;
+  support: string | undefined;
   className?: string;
 }
 

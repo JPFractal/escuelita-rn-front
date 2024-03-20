@@ -12,20 +12,25 @@ import FormFieldsLanguage from "@/forms/form-fields/language";
 import FormFieldsSalary from "@/forms/form-fields/salary";
 import FormFieldsSkill from "@/forms/form-fields/skill";
 import FormFieldsSocialNetworks from "@/forms/form-fields/social-networks";
-import {
-  RegisterTalent,
-  RegisterTalentSchema,
-  regiterTalentDefaultValues,
-} from "@/zodSchemas/registerSchema";
-import { useForm, useFormContext } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import FormFieldsNames from "@/forms/form-fields/names";
 import FormFieldsCountry from "@/forms/form-fields/country";
 import FormFieldsImage from "@/forms/form-fields/image";
 import FormFieldsDescription from "@/forms/form-fields/description";
 import FormFieldsProfile from "@/forms/form-fields/profile";
 import FormFieldsCellphone from "@/forms/form-fields/cellphone";
+import Loader from "@/components/common/Loader/loader";
+import {
+  RegisterTalent,
+  RegisterTalentSchema,
+  regiterTalentDefaultValues,
+} from "@/zodSchemas/registerSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 import useTalents from "@/hooks/useTalents";
+import { useRouter } from 'next/navigation'
+
+
 export default function TalentRegister({
   className,
   style,
@@ -39,9 +44,13 @@ export default function TalentRegister({
   });
 
   const { postTalent } = useTalents();
+  const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter()
 
   async function handleSubmit(data: RegisterTalent) {
+    setLoading(true);
     await postTalent(data)
+    router.push("/")
   }
   return (
     <FormContextProvider
@@ -53,6 +62,12 @@ export default function TalentRegister({
       }}
     >
       <Paper className="w-[606px] custom-shadow border-[1px] border-gray-30 flex flex-col gap-5">
+        {loading ? 
+        <div className="w-full flex justify-center">
+          <Loader text="Guardando..."/>
+        </div>
+        :
+        <>
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
             <Typography variant="title">Nuevo talento</Typography>
@@ -133,6 +148,8 @@ export default function TalentRegister({
             <FormFieldsCountry />
           </SectionContainer>
         </div>
+        </>
+        }
       </Paper>
     </FormContextProvider>
   );

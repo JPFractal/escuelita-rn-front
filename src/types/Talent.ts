@@ -5,15 +5,16 @@ import Language from "./Language";
 import Skill from "./Skill";
 
 export default interface Talent {
+  id?: number;
   photo?: string;
   name?: string;
-  role?: string;
+  roleId: number;
   rating?: number;
-  city?: string;
-  country?: string;
+  cityId: number;
+  countryId: number;
   salary_min?: number;
   salary_max?: number;
-  cellphone: string;
+  cellphone?: string;
   selected?: boolean;
   national_currency?: number;
 }
