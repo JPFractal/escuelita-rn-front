@@ -115,25 +115,9 @@ export default function TalentRegister({
           </SectionContainer>
           <SectionContainer title="Habilidades técnicas">
             <FormFieldsSkill tech />
-            <Button
-              StartIcon={<AddIcon />}
-              variant="text"
-              color="sky"
-              className="w-fit"
-            >
-              Agregar más
-            </Button>
           </SectionContainer>
           <SectionContainer title="Habilidades blandas">
             <FormFieldsSkill />
-            <Button
-              StartIcon={<AddIcon />}
-              variant="text"
-              color="sky"
-              className="w-fit"
-            >
-              Agregar más
-            </Button>
           </SectionContainer>
           <SectionContainer title="Experiencias laborales">
             <FormFieldsExperienceLabor />

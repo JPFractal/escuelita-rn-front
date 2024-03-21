@@ -13,4 +13,5 @@ export default interface TextFieldProps {
   type?: string;
   helperText?: string;
   inputProps?: any;
+  onKeyDown?: Function
 }
