@@ -27,7 +27,8 @@ export default function TextField({
   onChange = (e: any) => (e.target.value = e.target.value),
   inputProps,
   helperText,
-  onKeyDown
+  onKeyDown,
+  autoComplete
 }: TextFieldProps) {
   const [_type, setType] = useState(type);
 
@@ -46,6 +47,7 @@ export default function TextField({
           onChange={onChange}
           {...inputProps}
           onKeyDown={onKeyDown}
+          autoComplete={autoComplete}
         />
 
         {type === "password" && (

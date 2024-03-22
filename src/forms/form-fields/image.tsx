@@ -1,6 +1,6 @@
 import UploadCard from "@/components/common/Card/UploadCard";
 import { getErrorMessage } from "@/utils/get-message-errors";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function FormFieldsImage() {
@@ -10,7 +10,9 @@ export default function FormFieldsImage() {
         formState: { errors },
     } = useFormContext();
 
-    const exm = register("imageUrl")
+    useEffect(() => {
+        register("imageUrl");
+    }, [])
     const handleChange = (e: any) => {
         setValue("imageUrl", e.target.files, {shouldValidate: true});
     }
@@ -19,7 +21,7 @@ export default function FormFieldsImage() {
         className="p-8 border border-gray-35"
         title="Foto de perfil"
         subtitle="PNG o JPG (max. 800x400px)"
-        onChange={(e: any) => {handleChange(e); exm.onChange(e)}}
+        onChange={(e: any) => {handleChange(e)}}
         {...getErrorMessage(errors, "imageUrl")}
     />
     );

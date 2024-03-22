@@ -20,7 +20,7 @@ export default function FormFieldsNames() {
           />
           <TextField
             fullwidth
-            name="lastName"
+            name="paternalSurname"
             label="Apellido Paterno"
             placeholder="Primer apellido"
             inputProps={register("paternalSurname")}
@@ -28,6 +28,7 @@ export default function FormFieldsNames() {
           />
           <TextField
             fullwidth
+            name="maternalSurname"
             label="Apellido Materno"
             placeholder="Segundo Apellido"
             inputProps={register("maternalSurname")}

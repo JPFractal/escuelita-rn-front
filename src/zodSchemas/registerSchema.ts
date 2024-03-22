@@ -1,3 +1,4 @@
+import Skill from "@/types/Skill";
 import z from "zod";
 const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_MIME_TYPES = [
@@ -30,7 +31,7 @@ export interface RegisterTalent {
   firstName: string;
   paternalSurname: string;
   maternalSurname: string;
-  imageUrl: any;
+  imageUrl: File;
   description: string;
   talentProfileId: number;
   currencyTypeId: number;
@@ -41,6 +42,8 @@ export interface RegisterTalent {
   githubUrl: string;
   countryId: number;
   cityId: number;
+  techSkills: Skill[];
+  softSkills: string[];
 }
 
 export const RegisterTalentSchema = z.object({
@@ -125,6 +128,14 @@ export const RegisterTalentSchema = z.object({
       invalid_type_error: "Es necesario seleccionar un país para seleccionar la ciudad"
     })
     .transform((value) => parseInt(value, 10)),
+  techSkills: z
+    .any()
+    .array()
+    .optional(),
+  softSkills: z
+    .any()
+    .array()
+    .optional(),
 });
 
 export type Talent = z.infer<typeof RegisterTalentSchema>;

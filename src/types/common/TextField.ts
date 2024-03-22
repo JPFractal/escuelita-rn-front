@@ -14,4 +14,5 @@ export default interface TextFieldProps {
   helperText?: string;
   inputProps?: any;
   onKeyDown?: Function
+  autoComplete?: string;
 }

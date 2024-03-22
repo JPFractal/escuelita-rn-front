@@ -7,6 +7,11 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function FormFieldsSkill({ tech = false }: { tech?: boolean }) {
+  const {
+    setValue,
+    register,
+} = useFormContext();
+
   const [skillName, setSkillName] = useState<string>("");
   const [years, setYears] = useState<number>(0);
   const [skills, setSkills] = useState<Skill[]>([])
@@ -16,15 +21,19 @@ export default function FormFieldsSkill({ tech = false }: { tech?: boolean }) {
   const [yearsError, setYearsError] = useState<boolean>(false);
   const [helperTextyears, setHelperTextYears] = useState<string>("");
   const handleAddSkill = () => {
-    if (validateFields()){
-      let updatedSkills = [{
-        name: skillName,
-        years: years
-      }, ...skills]
-      setSkills(updatedSkills)
-      setSkillName("");
-      setYears(0);
-    }
+    if (!validateFields()) return
+
+    let updatedSkills = [{
+      name: skillName,
+      years: years
+    }, ...skills]
+    if (tech) setValue("techSkills", updatedSkills)
+    else setValue("softSkills", updatedSkills.map(techSkill => techSkill.name)) // parse to softSkill
+    
+    setSkills(updatedSkills)
+    setSkillName("");
+    setYears(0);
+    
   }
   const validateFields = () : boolean => {
     setNameError(false);
@@ -45,17 +54,18 @@ export default function FormFieldsSkill({ tech = false }: { tech?: boolean }) {
     return true;
   }
   return (
-    <div className="w-full grid grid-cols-12 gap-4">
+    <div className="w-full grid gap-4">
       <TextField
         className="col-span-12"
         label={`Habilidad ${tech ? "tecnica" : "blanda"}`}
         placeholder="Nombre de la habilidad"
-        name="name"
+        name="skillName"
         value={skillName}
         onChange={(e: any) => setSkillName(e.target.value)}
         onKeyDown={(e: any) => { if (e.key === "Enter") {e.preventDefault(); handleAddSkill()} }}
         error={nameError}
         helperText={helperTextName}
+        autoComplete="off"
       />
       {tech && (
         <TextField
