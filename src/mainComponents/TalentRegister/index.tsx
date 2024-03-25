@@ -14,6 +14,7 @@ import FormFieldsSkill from "@/forms/form-fields/skill";
 import FormFieldsSocialNetworks from "@/forms/form-fields/social-networks";
 import FormFieldsNames from "@/forms/form-fields/names";
 import FormFieldsCountry from "@/forms/form-fields/country";
+import FormFieldsCurriculum from "@/forms/form-fields/curriculum";
 import FormFieldsImage from "@/forms/form-fields/image";
 import FormFieldsDescription from "@/forms/form-fields/description";
 import FormFieldsProfile from "@/forms/form-fields/profile";
@@ -48,9 +49,10 @@ export default function TalentRegister({
   const router = useRouter()
 
   async function handleSubmit(data: RegisterTalent) {
-    setLoading(true);
-    await postTalent(data)
-    router.push("/")
+    console.log(data)
+    //setLoading(true);
+    //await postTalent(data)
+    //router.push("/")
   }
   return (
     <FormContextProvider
@@ -89,11 +91,7 @@ export default function TalentRegister({
             <FormFieldsNames />
           </SectionContainer>
           <SectionContainer title="Curriculum Vitae">
-            <UploadCard
-              className="p-8 border border-gray-35"
-              title="Curriculum Vitae"
-              subtitle="PDF (max. 800x400px)"
-            />
+            <FormFieldsCurriculum />
           </SectionContainer>
           <SectionContainer title="Foto de perfil">
             <FormFieldsImage />

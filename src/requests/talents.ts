@@ -16,11 +16,13 @@ export const POST_TALENT = (talent: RegisterTalent) => {
     imageUrl, 
     techSkills, 
     softSkills, 
+    curriculum,
     ...registerTalentDto} = talent;
   formData.append("file", imageUrl)
   formData.append("techSkills", JSON.stringify(techSkills))
   formData.append("softSkills", JSON.stringify(softSkills))
   formData.append("talent", JSON.stringify(registerTalentDto))
+  formData.append("curriculum", curriculum)
   return fetch(API_DIRECTORY.TALENTS.register.src, {
     method: "POST",
     body: formData

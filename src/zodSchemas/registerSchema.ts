@@ -6,6 +6,9 @@ const ACCEPTED_IMAGE_MIME_TYPES = [
   "image/jpg",
   "image/png",
 ];
+const CURRICULUM_MIME_TYPES = [
+  "application/pdf",
+]
 const ACCEPTED_IMAGE_TYPES = ["jpeg", "jpg", "png"];
 
 
@@ -31,6 +34,7 @@ export interface RegisterTalent {
   firstName: string;
   paternalSurname: string;
   maternalSurname: string;
+  curriculum: File;
   imageUrl: File;
   description: string;
   talentProfileId: number;
@@ -59,6 +63,15 @@ export const RegisterTalentSchema = z.object({
     .string()
     .min(2, { message: "El apellido materno es requerido" })
     .max(100),
+  curriculum: z
+    .any()
+    .refine((files) => {
+      return files?.[0]?.size <= MAX_FILE_SIZE;
+    }, `El tamaño maximo de los archivos es de ${MAX_FILE_SIZE/1000000}MB.`)
+    .refine((files) => CURRICULUM_MIME_TYPES.includes(files?.[0]?.type) ,
+    'Solo el formato ".pdf" es permitido')
+    .transform(files => files?.[0]) // Sends only the first file
+    .optional(),
   imageUrl: z
     .any()
     .refine((files) => {
@@ -66,7 +79,7 @@ export const RegisterTalentSchema = z.object({
     }, `El tamaño maximo de las imagenes es de ${MAX_FILE_SIZE/1000000}MB.`)
     .refine((files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
     'Solo los formatos ".jpg", ".jpeg" y ".png" son permitidos')
-    .transform(files => files?.[0]) // Send only the first file
+    .transform(files => files?.[0])
     .optional(),
   description: z
     .string()

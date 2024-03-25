@@ -16,6 +16,7 @@ export default function FormFieldsNames() {
             label="Nombres"
             placeholder="Nombres del talento"
             inputProps={register("firstName")}
+            autoComplete="given-name"
             {...getErrorMessage(errors, "firstName")}
           />
           <TextField
@@ -23,6 +24,7 @@ export default function FormFieldsNames() {
             name="paternalSurname"
             label="Apellido Paterno"
             placeholder="Primer apellido"
+            autoComplete="family-name"
             inputProps={register("paternalSurname")}
             {...getErrorMessage(errors, "paternalSurname")}
           />
@@ -31,6 +33,7 @@ export default function FormFieldsNames() {
             name="maternalSurname"
             label="Apellido Materno"
             placeholder="Segundo Apellido"
+            autoComplete="family-name"
             inputProps={register("maternalSurname")}
             {...getErrorMessage(errors, "maternalSurname")}
           />
