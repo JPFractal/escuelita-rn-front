@@ -30,8 +30,8 @@ export default function FormFieldsLanguage({
         fullwidth
         options={metadata?.languages}
         defaultValue={language?.name}
-        //inputProps={register("paternalSurname")}
-        //{...getErrorMessage(errors, "paternalSurname")}
+        inputProps={register("langId")}
+        {...getErrorMessage(errors, "langId")}
       />
       <Select
         className="col-span-12"
@@ -41,8 +41,8 @@ export default function FormFieldsLanguage({
         fullwidth
         options={metadata?.languagesLevels}
         defaultValue={language?.level.toString()}
-        //inputProps={register("paternalSurname")}
-        //{...getErrorMessage(errors, "paternalSurname")}
+        inputProps={register("langLevelId")}
+        {...getErrorMessage(errors, "langLevelId")}
       />
     </div>
   );

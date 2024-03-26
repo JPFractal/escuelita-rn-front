@@ -48,6 +48,8 @@ export interface RegisterTalent {
   cityId: number;
   techSkills: Skill[];
   softSkills: string[];
+  languageId: number;
+  langLevelId: number;
 }
 
 export const RegisterTalentSchema = z.object({
@@ -133,14 +135,6 @@ export const RegisterTalentSchema = z.object({
       message: "El campo no puede tener más de 100 caracteres",
     })
     .url({ message: "Por favor, ingresa una URL válida" }),
-  countryId: z
-    .string()
-    .transform((value) => parseInt(value, 10)),
-  cityId: z
-    .string({
-      invalid_type_error: "Es necesario seleccionar un país para seleccionar la ciudad"
-    })
-    .transform((value) => parseInt(value, 10)),
   techSkills: z
     .any()
     .array()
@@ -149,6 +143,20 @@ export const RegisterTalentSchema = z.object({
     .any()
     .array()
     .optional(),
+  langId: z
+    .string()
+    .transform((value) => parseInt(value, 10)),
+  langLevelId: z
+    .string()
+    .transform((value) => parseInt(value, 10)),
+  countryId: z
+    .string()
+    .transform((value) => parseInt(value, 10)),
+  cityId: z
+    .string({
+      invalid_type_error: "Es necesario seleccionar un país para seleccionar la ciudad"
+    })
+    .transform((value) => parseInt(value, 10)),
 });
 
 export type Talent = z.infer<typeof RegisterTalentSchema>;
